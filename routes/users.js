@@ -5,13 +5,9 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
+  router.put("/:userId", (req, res) => {
     knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
+      // edit users table
   });
 
   return router;
