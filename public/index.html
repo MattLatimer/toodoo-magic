@@ -12,10 +12,10 @@
   </head>
 
   <body>
-      <nav>
+      <nav id="navbar">
         <form method="POST" action="/items">
-          <textarea name="text" placeholder="watch Silence of the Lambs"></textarea>
-          <input type="submit" value="Add to list">
+          <textarea name="text" id="todo" placeholder="watch Silence of the Lambs"></textarea>
+          <input type="submit" value="Add to list" id="addItem">
         </form>
         <span>LOGO</span>
         <span>USER</span>
@@ -24,7 +24,7 @@
       <main>
         <div>
           <h1>MOVIES</h1>
-          <ul>
+          <ul id="movies">
             <li>movie</li>
           </ul>
         </div>
