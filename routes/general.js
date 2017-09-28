@@ -15,8 +15,9 @@ module.exports = (knex) => {
   });
 
   router.put("/login", (req, res) => {
-    // knex
-      // send login info
+    req.session.user_id = knex('users').where({
+      id: 1
+    }).select('id');
   })
 
   router.post("/register", (req, res) => {
