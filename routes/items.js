@@ -12,8 +12,13 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res) => {
-    // knex
-      // add to items table
+    const { itemContent, catid, userid } = req.body;
+    console.log(`${itemContent}, ${catid}, ${userid}`);
+    // knex('items').insert([{content: req.body.itemContent},
+    //                       {categories_id: req.body.catid},
+    //                       {users_id: req.body.userid}])
+    //               .then(res => console.log("ressssss", res))
+    res.status(201).send();
   });
 
   router.delete("/:itemId", (req, res) => {
