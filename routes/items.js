@@ -4,9 +4,39 @@ const express = require('express');
 const router  = express.Router();
 
 // localhost:8080/items/
+/*need to add middleware for user id and plug into all router */
 
 module.exports = (knex) => {
+  // Helper functions
+  // getKeyword: returns one of the four keywords OR the entire string which was passed in
+  function getKeyword(str) {
+    for (const i = 0; i < str.length; i++) {
+      if (str[i] === ' ') {
+        const end = i;
+        break;
+      }
+    }
+    let verb = str.splice(0, end);
+    if (verb === 'eat' || verb === 'watch' || verb === 'read' || verb === 'buy') {
+      return verb;
+    }
+    else {
+      for (const i = str.length - 1; i > 0; i--) {
+        if (str[i] === ' ') {
+          const start = i;
+          break;
+        }
+      }
+      verb = str.splice(start, str.length);
+      if (verb === 'eat' || verb === 'watch' || verb === 'read' || verb === 'buy') {
+        return verb;
+      }
+    }
+    return str;
+  }
+
   router.get("/", (req, res) => {
+    res.send(knex.select('content', 'categories.title').from('items').join('categories').on(items.categories_id = categories.id).where(items.users_id = '1'))
     // knex
       // retrieve from items table
   });
@@ -34,7 +64,8 @@ module.exports = (knex) => {
   });
 
   router.delete("/:itemId", (req, res) => {
-    // knex
+    // response = knex.select('content', 'categories.title').from('items').join('categories').on(items.categories_id = categories.id).where(items.users_id = '1')
+      // knex
       // delete from items table
   });
 
