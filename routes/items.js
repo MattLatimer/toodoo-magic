@@ -3,8 +3,9 @@
 const express = require('express');
 const router  = express.Router();
 
+// localhost:8080/items/
+
 module.exports = (knex) => {
-  // This is essentially our index page
   router.get("/", (req, res) => {
     knex
       // retrieve from items table
