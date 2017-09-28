@@ -34,23 +34,21 @@ app.use(methodOverride('_method'));
 
 // Setup cookie session
 app.use(cookieSession({
-  name: 'sesssion',
+  name: 'session',
   secret: 'lighthouse'
 }));
 
 // Setup cookies as response locals
 app.use(function(req, res, next) {
-  res.locals = {
-    id: req.session.user_id
-  };
+  req.session = {
+    userId: 1
+  }
+
   next();
 });
 
-// req.session.user_id = knex('users').where({
-//   id: 1
-// }).select('id');
 
-// app.set("view engine", "ejs"); // Our app will be a SPA
+app.set("view engine", "ejs"); // Our app will be a SPA
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -58,6 +56,7 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 app.use(express.static("public"));
 
 // Mount all resource routes
