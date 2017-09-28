@@ -3,15 +3,13 @@
 const express = require('express');
 const router  = express.Router();
 
+// localhost:8080/users/
+
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
+  router.put("/:userId", (req, res) => {
+    // knex
+      // edit users table
   });
 
   return router;
