@@ -15,7 +15,7 @@ module.exports = (knex) => {
         break;
       }
     }
-    const verb = str.splice(0, end);
+    let verb = str.splice(0, end);
     if (verb === 'eat' || verb === 'watch' || verb === 'read' || verb === 'buy') {
       return verb;
     }
@@ -26,7 +26,7 @@ module.exports = (knex) => {
           break;
         }
       }
-      const verb = str.splice(start, str.length);
+      verb = str.splice(start, str.length);
       if (verb === 'eat' || verb === 'watch' || verb === 'read' || verb === 'buy') {
         return verb;
       }
