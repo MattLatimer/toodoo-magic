@@ -19,7 +19,7 @@ module.exports = (knex) => {
       // send login info
   })
 
-  router.put("/register", (req, res) => {
+  router.post("/register", (req, res) => {
     // knex
       // send register info
   })
