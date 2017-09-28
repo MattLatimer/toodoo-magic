@@ -28,25 +28,25 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res) => {
-    const keyword = 'eat';
+    const keyword = getKeyword(req.body.itemContent);
 
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {
         console.log('Error finding category from keyword');
       } else {
         if (result.length === 0) {
-          res.locals.category = 0;
+          res.locals.category = 5;
         } else {
           res.locals.category = result[0]['categories_id'];
         }
         console.log('Category is:', res.locals.category);
+        knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: req.body.userid}])
+                     .then(res.status(201).send());
       }
     });
     
     // const { itemContent, catid, userid } = req.body;
     // console.log(`${itemContent}, ${catid}, ${userid}`);
-    knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: req.body.userid}])
-                 .then(res.status(201).send());
   });
 
   router.delete("/:itemId", (req, res) => {
