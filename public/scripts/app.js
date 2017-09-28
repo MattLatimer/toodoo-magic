@@ -4,8 +4,8 @@ Hard coded user info for dev
 const full_name   = 'Andy Leung';
 const email       = 'andy@email.com';
 const pw_hash     = 'l3g1th4sh';
-const catId       = '1';
-const userId      = '1';
+const catId       = 1;
+const userId      = 1;
 
 // Helper functions
 function renderItem(item) {

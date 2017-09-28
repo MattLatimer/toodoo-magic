@@ -12,12 +12,9 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res) => {
-    const { itemContent, catid, userid } = req.body;
-    console.log(`${itemContent}, ${catid}, ${userid}`);
-    // knex('items').insert([{content: req.body.itemContent},
-    //                       {categories_id: req.body.catid},
-    //                       {users_id: req.body.userid}])
-    //               .then(res => console.log("ressssss", res))
+    // const { itemContent, catid, userid } = req.body;
+    // console.log(`${itemContent}, ${catid}, ${userid}`);
+    knex('items').insert([{categories_id: req.body.catid, content: req.body.itemContent, users_id: req.body.userid}])
     res.status(201).send();
   });
 
