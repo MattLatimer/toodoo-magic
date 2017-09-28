@@ -11,12 +11,10 @@ module.exports = (knex) => {
     // render login page if not logged in
     // res.render("login");
     // else render app
-    res.render("index");
+    res.render("index")
   });
 
   router.put("/login", (req, res) => {
-    // knex
-      // send login info
   })
 
   router.post("/register", (req, res) => {

@@ -14,6 +14,7 @@ const knex            = require("knex")(knexConfig[ENV]);
 const morgan          = require('morgan');
 const knexLogger      = require('knex-logger');
 const methodOverride  = require('method-override');
+const cookieSession   = require('cookie-session')
 
 // Seperated Routes for each Resource
 const usersRoutes   = require("./routes/users");
@@ -31,7 +32,23 @@ app.use(knexLogger(knex));
 // Method override for HTML forms
 app.use(methodOverride('_method'));
 
-// app.set("view engine", "ejs"); // Our app will be a SPA
+// Setup cookie session
+app.use(cookieSession({
+  name: 'session',
+  secret: 'lighthouse'
+}));
+
+// Setup cookies as response locals
+app.use(function(req, res, next) {
+  req.session = {
+    userId: 1
+  }
+
+  next();
+});
+
+
+app.set("view engine", "ejs"); // Our app will be a SPA
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -39,6 +56,7 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 app.use(express.static("public"));
 
 // Mount all resource routes

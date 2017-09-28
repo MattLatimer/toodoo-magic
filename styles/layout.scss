@@ -1,10 +1,37 @@
 @import 'node_modules/foundation-sites/scss/foundation';
-
 @include foundation-everything;
+
 body {
   background-color: #EEE;
 
   h1 {
     color: #244751;
+  }
+
+  .tabs-title {
+    a {
+      font: 200%;
+    }
+  }
+
+  .watch {
+    background-color: #FF7D7D;
+  }
+
+  .read {
+    background-color: #74FF74
+  }
+
+  .eat {
+    background-color: #7070FF
+  }
+
+  .buy {
+    background-color: #FFFF70;
+  }
+
+  .sort {
+    background-color: #9E9E9E;
+    
   }
 }
