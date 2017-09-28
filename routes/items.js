@@ -7,22 +7,22 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.get("/", (req, res) => {
-    knex
+    // knex
       // retrieve from items table
   });
 
   router.post("/", (req, res) => {
-    knex
+    // knex
       // add to items table
   });
 
   router.delete("/:itemId", (req, res) => {
-    knex
+    // knex
       // delete from items table
   });
 
   router.put("/:itemId", (req, res) => {
-    knex
+    // knex
       // update items table
   })
 

@@ -8,7 +8,7 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.put("/:userId", (req, res) => {
-    knex
+    // knex
       // edit users table
   });
 
