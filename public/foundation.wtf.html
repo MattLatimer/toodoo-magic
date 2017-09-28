@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+</head>
+
+<body>
+  <ul class="tabs" data-tabs id="example-tabs">
+    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+    <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+    <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
+    <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
+    <li class="tabs-title"><a href="#panel5">Tab 5</a></li>
+    <li class="tabs-title"><a href="#panel6">Tab 6</a></li>
+  </ul>
+  
+  <div class="tabs-content" data-tabs-content="example-tabs">
+    <div class="tabs-panel is-active" id="panel1">
+      <p>One</p>
+      <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    </div>
+    <div class="tabs-panel" id="panel2">
+      <p>Two</p>
+      <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    </div>
+    <div class="tabs-panel" id="panel3">
+      <p>Three</p>
+      <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    </div>
+    <div class="tabs-panel" id="panel4">
+      <p>Four</p>
+      <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
+    </div>
+    <div class="tabs-panel" id="panel5">
+      <p>Five</p>
+      <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    </div>
+    <div class="tabs-panel" id="panel6">
+      <p>Six</p>
+      <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
+    </div>
+  </div>
+  
+  <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+    <li>
+      <a href="#">Item 1</a>
+      <ul class="vertical menu">
+        <li>
+          <a href="#">Item 1A</a>
+          <ul class="vertical menu">
+            <li><a href="#">Item 1A</a></li>
+            <li><a href="#">Item 1B</a></li>
+            <li><a href="#">Item 1C</a></li>
+            <li><a href="#">Item 1D</a></li>
+            <li><a href="#">Item 1E</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Item 1B</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Item 2</a>
+      <ul class="vertical menu">
+        <li><a href="#">Item 2A</a></li>
+        <li><a href="#">Item 2B</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Item 3</a>
+      <ul class="vertical menu">
+        <li><a href="#">Item 3A</a></li>
+        <li><a href="#">Item 3B</a></li>
+      </ul>
+    </li>
+  </ul>
+  
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/vendor/foundation.js"></script>  
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script>$(document).foundation();</script>
+</body>
+</html>
