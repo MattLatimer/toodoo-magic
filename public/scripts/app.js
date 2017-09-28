@@ -9,7 +9,7 @@ const userId      = 1;
 
 // Helper functions
 function renderItem(item) {
-  $('#movies').append(`<li>${item}</li>`);
+  $('#movies').append($("<li>").text(item));
 }
 
 function loadNewItem() {
