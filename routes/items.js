@@ -10,29 +10,15 @@ module.exports = (knex) => {
   // Helper functions
   // getKeyword: returns one of the four keywords OR the entire string which was passed in
   function getKeyword(str) {
-    for (const i = 0; i < str.length; i++) {
-      if (str[i] === ' ') {
-        const end = i;
-        break;
-      }
+    const words = str.split(' ');
+    const wLen = words.length - 1;
+    if (words[0] === 'eat' || words[0] === 'watch' || words[0] === 'read' || words[0] === 'buy') {
+      return words[0];
+    } else if (words[wLen] === 'eat' || words[wLen] === 'watch' || words[wLen] === 'read' || words[wLen] === 'buy') {
+      return words[wLen];
+    } else {
+      return str;
     }
-    let verb = str.splice(0, end);
-    if (verb === 'eat' || verb === 'watch' || verb === 'read' || verb === 'buy') {
-      return verb;
-    }
-    else {
-      for (const i = str.length - 1; i > 0; i--) {
-        if (str[i] === ' ') {
-          const start = i;
-          break;
-        }
-      }
-      verb = str.splice(start, str.length);
-      if (verb === 'eat' || verb === 'watch' || verb === 'read' || verb === 'buy') {
-        return verb;
-      }
-    }
-    return str;
   }
 
   router.get("/", (req, res) => {
