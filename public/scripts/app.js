@@ -9,7 +9,7 @@ const userId      = 1;
 
 // Helper functions
 function renderItem(item) {
-  $(`${item.categories_id}`).append($("<li>").text(item).append(`<button> Edit</button>`));
+  $(`.${item.categories_id}`).append($("<li>").text(item.content).append(`<button> Edit</button>`));
 }
 
 // function loadNewItem() {
@@ -29,7 +29,7 @@ function renderItem(item) {
 $(() => {
   $('#addItem').on('click', (e) => {
     e.preventDefault();
-    const itemContent = $('#todo').val();
+    const itemContent = $('#todoForm').val();
     $.ajax({
       url: "/items",
       method: "POST",
