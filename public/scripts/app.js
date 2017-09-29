@@ -7,9 +7,26 @@ const pw_hash     = 'l3g1th4sh';
 const catId       = 1;
 const userId      = 1;
 
+/* TODO renderITem function merge with renderItems eventurally*/
 // Helper functions
 function renderItem(item) {
-  $('#movies').append($("<li>").text(item));
+  $('#movies').append(`<li>${item}</li>`);
+}
+
+const categoryMap = {
+  'To Watch': "movies",
+  'To Read': "books",
+  'To Eat': "restaurants",
+  'To Buy': "products",
+  'Uncategorized': "uncategorized"
+}
+
+function renderItems(items) {
+  for (let item of items){
+    // 
+    const containerID = '#' + categoryMap[item.title]
+    $(containerID).append(`<li>`).text(item.content);  
+  }
 }
 
 function loadNewItem() {
@@ -23,7 +40,20 @@ function loadNewItem() {
 }
 
 // Calls to /general
+function loadItems(){
+  $.ajax({
+    url: "/items",
+    method: "GET",
+    dataType: "json",
+    success: (items) => {
+      renderItems(items);
+    }
+  })
+}
 
+$(() => {
+  loadItems();
+})
 
 // Calls to /items
 $(() => {

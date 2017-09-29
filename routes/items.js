@@ -22,7 +22,16 @@ module.exports = (knex) => {
   }
 
   router.get("/", (req, res) => {
-    res.send(knex.select('content', 'categories.title').from('items').join('categories').on(items.categories_id = categories.id).where(items.users_id = '1'))
+    knex.select('content', 'categories.title')
+    .from('items')
+    .join('categories', 'items.categories_id', 'categories.id')
+    .where('items.users_id', '1')
+    .then((rows)=>{ 
+      res.json(rows)
+    })
+    .catch((err) => {
+      console.log('error GET /items', err)
+    })
     // knex
       // retrieve from items table
   });
