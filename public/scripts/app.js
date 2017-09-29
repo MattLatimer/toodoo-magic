@@ -24,7 +24,7 @@ const categoryMap = {
 function renderItems(items) {
   for (let item of items){
     const containerID = "." + categoryMap[item.title]
-    $(containerID).append($("<li>").text(item.content));  
+    $(containerID).append($("<li>").text(item.content));
   }
 }
 
@@ -63,5 +63,25 @@ $(() => {
     })
   })
 })
+
+$('#user1button').on('click', (blah) => {
+  blah.preventDefault();
+  $.ajax({
+    url: "/login",
+    method: "PUT",
+    data: {user_id: 1}
+  })
+})
+
+$('#user2button').on('click', (blah) => {
+  blah.preventDefault();
+  $.ajax({
+    url: "/login",
+    method: "PUT",
+    data: {user_id: 2}
+  })
+})
+
+
 
 // Calls to /users

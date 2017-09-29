@@ -26,7 +26,7 @@ module.exports = (knex) => {
     .from('items')
     .join('categories', 'items.categories_id', 'categories.id')
     .where('items.users_id', '1')
-    .then((rows)=>{ 
+    .then((rows)=>{
       res.json(rows)
     })
     .catch((err) => {
