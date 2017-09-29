@@ -1,5 +1,5 @@
 /*
-Hard coded user info for dev
+Hard coded user info for dev <--------------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING IS DONE--------------------
 */
 const full_name   = 'Andy Leung';
 const email       = 'andy@email.com';
@@ -7,24 +7,24 @@ const pw_hash     = 'l3g1th4sh';
 const catId       = 1;
 const userId      = 1;
 
-/* TODO renderITem function merge with renderItems eventurally*/
+/* DONE renderITem function merge with renderItems eventurally*/
 // Helper functions
-function renderItem(item) {
-  $(`.${item.categories_id}`).append($("<li>").text(item.content).append(`<button> Edit</button>`));
-}
+// function renderItem(item) {
+//   $(`.${item.categories_id}`).append($("<li>").text(item.content).append(`<button> Edit</button>`));
+// }
 
-const categoryMap = {
-  "To Watch": "1",
-  "To Read": "2",
-  "To Eat": "4",
-  "To Buy": "3",
-  "Uncategorized": "5"
-}
+// const categoryMap = {
+//   "To Watch": "1",
+//   "To Read": "2",
+//   "To Eat": "3",
+//   "To Buy": "4",
+//   "Uncategorized": "5"
+// };
 
 function renderItems(items) {
   for (let item of items){
-    const containerID = "." + categoryMap[item.title]
-    $(containerID).append($("<li>").text(item.content));  
+    const containerID = "." + item.categories_id;
+    $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id));
   }
 }
 
@@ -53,11 +53,11 @@ $(() => {
     $.ajax({
       url: "/items",
       method: "POST",
-      data: { itemContent: itemContent, catid: catId, userid: userId },
+      data: { itemContent: itemContent, userid: userId }, //<-------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING DONE------------------
       success: function(item) {
         // loadNewItem(item);
         console.log(item);
-        renderItem(item);
+        renderItems(item);
         $('#navbar').find('textarea[name="text"]').val('');
       }
     })

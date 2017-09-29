@@ -22,18 +22,17 @@ module.exports = (knex) => {
   }
 
   router.get("/", (req, res) => {
-    knex.select('content', 'categories.title')
-    .from('items')
-    .join('categories', 'items.categories_id', 'categories.id')
-    .where('items.users_id', '1')
-    .then((rows)=>{ 
-      res.json(rows)
-    })
-    .catch((err) => {
-      console.log('error GET /items', err)
-    })
+    knex.select('id', 'content', 'categories_id')
+      .from('items')
+      .where('items.users_id', '1')//<--------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING SETUP----------------------------------------
+      .then((rows)=>{
+        res.json(rows);
+      })
+      .catch((err) => {
+        console.log('error GET /items', err);
+      });
     // knex
-      // retrieve from items table
+    // retrieve from items table
   });
 
   router.post("/", (req, res) => {
@@ -41,7 +40,7 @@ module.exports = (knex) => {
 
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {
-        // console.log('Error finding category from keyword');
+        console.log('Error finding category from keyword');
         throw err;
       } else {
         if (result.length === 0) {
@@ -50,18 +49,17 @@ module.exports = (knex) => {
           res.locals.category = result[0]['categories_id'];
         }
         console.log('Category is:', res.locals.category);
-        knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: req.body.userid}])
-                     .returning(['id', 'content', 'categories_id'])
-                     .asCallback((err, result) => {
-                      if (err) {
-                        throw err;
-                      } else {
-                        console.log(result);
-                        const itemObj = result[0];
-                        knex('items').where('id', itemObj.id)
-                        .then(res.status(201).send(itemObj));
-                      }
-                     });
+        res.locals.userid = 1;  //<--------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING SETUP----------------------------------------
+        knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: res.locals.userid}])
+          .returning(['id', 'content', 'categories_id']).asCallback((err, result) => {
+            if (err) {
+              throw err;
+            } else {
+              console.log(result);
+              knex('items').where('id', result[0].id)
+                .then(res.status(201).send(result));
+            }
+          });
       }
     });
     // knex('id', 'content', 'categories_id').from('items').where('user_id')
@@ -71,14 +69,14 @@ module.exports = (knex) => {
 
   router.delete("/:itemId", (req, res) => {
     // response = knex.select('content', 'categories.title').from('items').join('categories').on(items.categories_id = categories.id).where(items.users_id = '1')
-      // knex
-      // delete from items table
+    // knex
+    // delete from items table
   });
 
   router.put("/:itemId", (req, res) => {
     // knex
-      // update items table
-  })
+    // update items table
+  });
 
   return router;
-}
+};
