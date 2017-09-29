@@ -40,10 +40,9 @@ app.use(cookieSession({
 
 // Setup cookies as response locals
 app.use(function(req, res, next) {
-  // req.session = {
-  //   user_id: 1
-  // }
-
+  res.locals = {
+    user_id: req.session.user_id
+  }
   next();
 });
 

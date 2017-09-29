@@ -24,15 +24,13 @@ module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex.select('id', 'content', 'categories_id')
       .from('items')
-      .where('items.users_id', '1')//<--------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING SETUP----------------------------------------
+      .where('items.users_id', req.session.user_id)
       .then((rows)=>{
         res.json(rows);
       })
       .catch((err) => {
         console.log('error GET /items', err);
       });
-    // knex
-    // retrieve from items table
   });
 
   router.post("/", (req, res) => {
@@ -49,7 +47,7 @@ module.exports = (knex) => {
           res.locals.category = result[0]['categories_id'];
         }
         console.log('Category is:', res.locals.category);
-        res.locals.userid = 1;  //<--------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING SETUP----------------------------------------
+        res.locals.userid = req.session.user_id;
         knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: res.locals.userid}])
           .returning(['id', 'content', 'categories_id']).asCallback((err, result) => {
             if (err) {
@@ -74,8 +72,12 @@ module.exports = (knex) => {
   });
 
   router.put("/:itemId", (req, res) => {
-    // knex
-    // update items table
+    const itemId = req.params.itemId;
+    const content = req.body.content;
+    const categoryId = req.body.categoryId;
+    const userId = req.session.user_id;
+    knex('items').where({'id': itemId, 'users_id': userId})
+      .update({'content': content, 'categories_id': categoryId});
   });
 
   return router;
