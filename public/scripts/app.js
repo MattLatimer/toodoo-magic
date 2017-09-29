@@ -10,37 +10,24 @@ const userId      = 1;
 /* TODO renderITem function merge with renderItems eventurally*/
 // Helper functions
 function renderItem(item) {
-  $('#movies').append(`<li>${item}</li>`);
+  $(`.${item.categories_id}`).append($("<li>").text(item.content).append(`<button> Edit</button>`));
 }
 
 const categoryMap = {
-  'To Watch': "movies",
-  'To Read': "books",
-  'To Eat': "restaurants",
-  'To Buy': "products",
-  'Uncategorized': "uncategorized"
+  '1': "movies",
+  '2': "books",
+  '4': "restaurants",
+  '3': "products",
+  '5': "uncategorized"
 }
 
 function renderItems(items) {
   for (let item of items){
     // 
-    const containerID = '#' + categoryMap[item.title]
+    const containerID = '.' + categoryMap[item.title]
     $(containerID).append(`<li>`).text(item.content);  
   }
-
-  $(`.${item.categories_id}`).append($("<li>").text(item.content).append(`<button> Edit</button>`));
-
 }
-
-// function loadNewItem() {
-//   $.ajax({
-//     url: "/items",
-//     method: "GET",
-//     success: (item) => {
-//       renderItem(item);
-//     }
-//   })
-// }
 
 // Calls to /general
 function loadItems(){
@@ -78,6 +65,3 @@ $(() => {
 })
 
 // Calls to /users
-$(() => {
-  $('.edit')
-})
