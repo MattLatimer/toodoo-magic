@@ -34,15 +34,15 @@ app.use(methodOverride('_method'));
 
 // Setup cookie session
 app.use(cookieSession({
-  name: 'session',
+  name: 'toodoo',
   secret: 'lighthouse'
 }));
 
 // Setup cookies as response locals
 app.use(function(req, res, next) {
-  req.session = {
-    userId: 1
-  }
+  // req.session = {
+  //   user_id: 1
+  // }
 
   next();
 });
