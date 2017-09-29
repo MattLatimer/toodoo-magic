@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Voodoo Magic</title>
+    <title>Toodoo</title>
     <meta name="viewport" content="width=device-width", initial-scale="1">
 
     <!-- Stylesheets -->
@@ -13,20 +13,9 @@
   </head>
 
   <body>
-      <nav id="navbar">
-        <form method="POST" action="/items">
-          <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
-          <input type="submit" value="Add to list" id="addItem">
-        </form>
-        <span class="cursive">Toodoo</span>
-        <form action="/login?_method=PUT" method="POST">
-          <input type="submit" value="Login as User 1" id="user1button">
-        </form>
-        <form action="/login?_method=PUT" method="POST">
-         <input type="submit" value="Login as User 2" id="user2button">
-        </form>
-        <span>USER</span>
-      </nav>
+    <nav id="navbar">
+    <% include ./_navbar.ejs %>
+    </nav>
       <main>
         <ul class="tabs" data-tabs id="category-tabs">
           <li class="tabs-title watch"><a href="#1">TO WATCH</a></li>

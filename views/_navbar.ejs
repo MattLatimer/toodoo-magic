@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/items">
+      <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
+      <input type="submit" value="Add to list" id="addItem">
+    </form>
+    <span class="cursive">Toodoo</span>
+    <form action="/login" method="POST">
+      <input type="submit" value="Login as User 1" id="user1button">
+    </form>
+    <form action="/login" method="POST">
+     <input type="submit" value="Login as User 2" id="user2button">
+    </form>
+    <% if (user_id !== null) { %>
+      <a href='logout'><button>Logout</button></a>
+    <!-- <form action="/logout" method="GET">
+      <input type="submit" value="Logout" id="logout">
+    </form> -->
+    <% } %>
+    <span>USER</span>
+</body>
+</html>
