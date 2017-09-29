@@ -32,7 +32,8 @@ module.exports = (knex) => {
 
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {
-        console.log('Error finding category from keyword');
+        // console.log('Error finding category from keyword');
+        throw err;
       } else {
         if (result.length === 0) {
           res.locals.category = 5;
@@ -41,10 +42,20 @@ module.exports = (knex) => {
         }
         console.log('Category is:', res.locals.category);
         knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: req.body.userid}])
-                     .then(res.status(201).send());
+                     .returning(['id', 'content', 'categories_id'])
+                     .asCallback((err, result) => {
+                      if (err) {
+                        throw err;
+                      } else {
+                        console.log(result);
+                        const itemObj = result[0];
+                        knex('items').where('id', itemObj.id)
+                        .then(res.status(201).send(itemObj));
+                      }
+                     });
       }
     });
-    
+    // knex('id', 'content', 'categories_id').from('items').where('user_id')
     // const { itemContent, catid, userid } = req.body;
     // console.log(`${itemContent}, ${catid}, ${userid}`);
   });

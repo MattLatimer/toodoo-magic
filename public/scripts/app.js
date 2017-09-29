@@ -9,18 +9,18 @@ const userId      = 1;
 
 // Helper functions
 function renderItem(item) {
-  $('#movies').append($("<li>").text(item));
+  $(`${item.categories_id}`).append($("<li>").text(item).append(`<button> Edit</button>`));
 }
 
-function loadNewItem() {
-  $.ajax({
-    url: "/items",
-    method: "GET",
-    success: (item) => {
-      renderItem(item);
-    }
-  })
-}
+// function loadNewItem() {
+//   $.ajax({
+//     url: "/items",
+//     method: "GET",
+//     success: (item) => {
+//       renderItem(item);
+//     }
+//   })
+// }
 
 // Calls to /general
 
@@ -34,9 +34,10 @@ $(() => {
       url: "/items",
       method: "POST",
       data: { itemContent: itemContent, catid: catId, userid: userId },
-      success: function() {
-        // loadNewItem();
-        renderItem(itemContent);
+      success: function(item) {
+        // loadNewItem(item);
+        console.log(item);
+        renderItem(item);
         $('#navbar').find('textarea[name="text"]').val('');
       }
     })
