@@ -27,17 +27,20 @@ function renderItems(items) {
     const containerID = '#' + categoryMap[item.title]
     $(containerID).append(`<li>`).text(item.content);  
   }
+
+  $(`.${item.categories_id}`).append($("<li>").text(item.content).append(`<button> Edit</button>`));
+
 }
 
-function loadNewItem() {
-  $.ajax({
-    url: "/items",
-    method: "GET",
-    success: (item) => {
-      renderItem(item);
-    }
-  })
-}
+// function loadNewItem() {
+//   $.ajax({
+//     url: "/items",
+//     method: "GET",
+//     success: (item) => {
+//       renderItem(item);
+//     }
+//   })
+// }
 
 // Calls to /general
 function loadItems(){
@@ -59,14 +62,15 @@ $(() => {
 $(() => {
   $('#addItem').on('click', (e) => {
     e.preventDefault();
-    const itemContent = $('#todo').val();
+    const itemContent = $('#todoForm').val();
     $.ajax({
       url: "/items",
       method: "POST",
       data: { itemContent: itemContent, catid: catId, userid: userId },
-      success: function() {
-        // loadNewItem();
-        renderItem(itemContent);
+      success: function(item) {
+        // loadNewItem(item);
+        console.log(item);
+        renderItem(item);
         $('#navbar').find('textarea[name="text"]').val('');
       }
     })

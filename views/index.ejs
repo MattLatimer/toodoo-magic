@@ -1,46 +1,24 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-
-  <body>
-    <h1>Hello World!</h1>
-  </body>
-</html>
- -->
-
- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Too-doo Magic</title>
+    <title>Voodoo Magic</title>
 
     <meta name="viewport" content="width=device-width", initial-scale="1">
 
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
       <nav id="navbar">
         <form method="POST" action="/items">
-          <textarea name="text" id="todo" placeholder="watch Silence of the Lambs"></textarea>
+          <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
           <input type="submit" value="Add to list" id="addItem">
         </form>
         <span>LOGO</span>
         <span>USER</span>
       </nav>
-
       <main>
+<!-- //begin jenny's// -->
         <div>
           <h1>MOVIES</h1>
           <ul id="movies">
@@ -70,8 +48,54 @@
           <ul id="uncategorized">
             <li>rando</li>
           </ul>
+        <!-- TABS HERE -->
+<!-- jenny's part -->
+        <ul class="tabs" data-tabs id="category-tabs">
+          <li class="tabs-title watch"><a href="#1">TO WATCH</a></li>
+          <li class="tabs-title read"><a href="#2">TO READ</a></li>
+          <li class="tabs-title eat"><a href="#4">TO EAT</a></li>
+          <li class="tabs-title buy"><a href="#3">TO BUY</a></li>
+          <li class="tabs-title sort"><a href="#5">TO SORT</a></li>
+        </ul>
+
+        <!-- TAB CONTENTS HERE -->
+        <div class="tabs-content" data-tabs-content="category-tabs">
+          <div class="tabs-panel" id="1">
+            <h1>MOVIES</h1>
+            <ul class="1">
+              <li>movie</li>
+            </ul>
+          </div>
+          <div class="tabs-panel" id="2">
+            <h1>BOOKS</h1>
+            <ul class="2">
+              <li>book</li>
+            </ul>
+          </div>
+          <div class="tabs-panel" id="4">
+            <h1>RESTAURANTS</h1>
+            <ul class="4">
+              <li>restaurant</li>
+            </ul>
+          </div>
+          <div class="tabs-panel" id="3">
+            <h1>PRODUCTS</h1>
+            <ul class="3">
+              <li>product</li>
+            </ul>
+          </div>
+          <div class="tabs-panel" id="5">
+            <h1>UNCATEGORIZED</h1>
+            <ul class="5">
+              <li>rando</li>
+            </ul>
+          </div>
         </div>
       </main>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/vendor/foundation.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script>$(document).foundation();</script>
   </body>
 </html>
 
