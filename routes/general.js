@@ -8,7 +8,6 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    console.log("YOOOOO:", req.session.user_id);
     // render login page if not logged in
     // res.render("login");
     // else render app
