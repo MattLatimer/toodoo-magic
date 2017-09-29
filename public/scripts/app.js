@@ -23,29 +23,28 @@ const userId      = 1;
 
 function renderItems(items) {
   for (let item of items){
-<<<<<<< HEAD
-=======
-    // console.log(item);
->>>>>>> 98a8b1559d9df2abbcf0a0a1ab3e723d6dc111ee
     const containerID = "." + item.categories_id;
-    $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id).append($("<input>").val('Delete').attr('type', 'submit').attr('itemId', item.id)));
+    $(containerID).append($("<li>").text(item.content).attr('id', item.id).attr('data-item-id', item.id).append($("<input>").val('Delete').attr('type', 'submit').attr('class', 'test').attr('itemId', item.id)));
   }
 }
 
-
 $(() => {
-  $(`#<$itemId>`).on('click', (e) => {
+  $('.tabs-panel').on('click', '.test', (e) => {
     e.preventDefault();
-    let templateVars = {
-      userId: req.session.user_id,
-      itemId: itemId,
-    };
+    const itemId = $('.test').attr('itemid');
     $.ajax({
-      url: "/items/`$<:itemId>`",
-      method: "DELETE",
+      url: '/items/' + itemId,
+      method: "DELETE", 
+      success: function(result){
+        alert('You have deleted the item!',result);
+        $('#'+itemId).remove();
+      },
+      error:function(error){
+        console.log("error occurred ",error);
+      }
+    });
   })
 })
-
 
 
 // Calls to /general

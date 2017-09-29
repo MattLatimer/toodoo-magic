@@ -33,6 +33,7 @@ module.exports = (knex) => {
       });
   });
 
+
   router.post("/", (req, res) => {
     const keyword = getKeyword(req.body.itemContent);
 
@@ -69,13 +70,15 @@ module.exports = (knex) => {
     //DELETE FUNCTION//
     const userId = req.session.user_id;
     const itemId = req.params.itemId;
-    console.log (req.session, itemId);
+    console.log("my values ",userId, itemId);
+    //console.log (res.locals.user_id, itemId);
     knex('items')
-    .where ({
-      users_id: 1,
-      id: itemId 
-    })//<--------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING SETUP----------------------------------------
+    .where ("users_id", userId)
+    .andWhere("id",itemId)
     .del()
+    .then((count)=>{
+      res.send({result:true});
+    })
     .catch((err) => {
       console.log('error delete /:itemsId', err);
     });
