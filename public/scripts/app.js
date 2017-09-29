@@ -74,7 +74,7 @@ $(() => {
       data: { user_id: 1 }
     })
   })
-  
+
   $('#user2button').on('click', (e) => {
     e.preventDefault();
     $.ajax({
@@ -82,6 +82,7 @@ $(() => {
       method: "POST",
       data: { user_id: 2 }
     })
+  })
 
   // $('#logout').on('click', (e) => {
   //   e.preventDefault();
