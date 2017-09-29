@@ -66,6 +66,19 @@ module.exports = (knex) => {
   });
 
   router.delete("/:itemId", (req, res) => {
+    //DELETE FUNCTION//
+    const userId = req.session.user_id;
+    const itemId = req.params.itemId;
+    console.log (req.session, itemId);
+    knex('items')
+    .where ({
+      users_id: 1,
+      id: itemId 
+    })//<--------------------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING SETUP----------------------------------------
+    .del()
+    .catch((err) => {
+      console.log('error delete /:itemsId', err);
+    });
     // response = knex.select('content', 'categories.title').from('items').join('categories').on(items.categories_id = categories.id).where(items.users_id = '1')
     // knex
     // delete from items table
