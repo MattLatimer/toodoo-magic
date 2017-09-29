@@ -80,6 +80,23 @@ module.exports = (knex) => {
       .update({'content': content, 'categories_id': categoryId});
   });
 
+  router.get("/edit/:itemId", (req, res) => {
+    res.locals.itemId = req.params.itemId;
+    res.locals.userId = req.session.user_id;
+    console.log("User and Item:", res.locals.userId, res.locals.itemId);
+    knex('items').select('content', 'categories_id').where({'id': res.locals.itemId, 'users_id': res.locals.userId})
+      .then((result) => {
+        if (result.length) {
+          console.log("Then result:", result);
+          res.locals.content = result[0]['content'];
+          res.locals.categoryId = result[0]["categories_id"];
+          res.render("edit");
+        } else {
+          res.status(401).send("You have no item here.");
+        }
+      });
+  });
+
   return router;
 };
 

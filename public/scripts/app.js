@@ -22,12 +22,13 @@ const userId      = 1;
 // };
 
 function renderItems(items) {
-  for (let item of items){
-    // console.log(item);
+  for (let item of items) {
     const containerID = "." + item.categories_id;
-    $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id));
+    $(containerID)
+      .append($("<li>")
+        .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)));
   }
-}
+} 
 
 // Calls to /general
 function loadItems(){
@@ -74,7 +75,7 @@ $(() => {
       data: { user_id: 1 }
     })
   })
-
+  
   $('#user2button').on('click', (e) => {
     e.preventDefault();
     $.ajax({
@@ -82,7 +83,6 @@ $(() => {
       method: "POST",
       data: { user_id: 2 }
     })
-  })
 
   // $('#logout').on('click', (e) => {
   //   e.preventDefault();
@@ -91,5 +91,6 @@ $(() => {
   //     method: "GET"
   //   })
   // })
+  });
 });
 // Calls to /users
