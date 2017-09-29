@@ -9,10 +9,10 @@
   </head>
 
   <body>
-      <nav>
+      <nav id="navbar">
         <form method="POST" action="/items">
-          <textarea name="text" placeholder="watch Silence of the Lambs"></textarea>
-          <input type="submit" value="Add to list">
+          <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
+          <input type="submit" value="Add to list" id="addItem">
         </form>
         <span>LOGO</span>
         <form action="/login?_method=PUT" method="POST">
@@ -21,45 +21,75 @@
         <span>USER</span>
       </nav>
       <main>
+<!-- //begin jenny's// -->
+        <!-- <div>
+          <h1>MOVIES</h1>
+          <ul id="movies">
+            <li>movie</li>
+          </ul>
+        </div>
+        <div>
+          <h1>BOOKS</h1>
+          <ul id="books">
+            <li>book</li>
+          </ul>
+        </div>
+        <div>
+          <h1>RESTAURANTS</h1>
+          <ul id="restaurants">
+            <li>restaurant</li>
+          </ul>
+        </div>
+        <div>
+          <h1>PRODUCTS</h1>
+          <ul id="products">
+            <li>product</li>
+          </ul>
+        </div>
+        <div>
+          <h1>UNCATEGORIZED</h1>
+          <ul id="uncategorized">
+            <li>rando</li>
+          </ul> -->
         <!-- TABS HERE -->
-
+<!-- jenny's part -->
         <ul class="tabs" data-tabs id="category-tabs">
-          <li class="tabs-title watch"><a href="#to-watch">TO WATCH</a></li>
-          <li class="tabs-title read"><a href="#to-read">TO READ</a></li>
-          <li class="tabs-title eat"><a href="#to-eat">TO EAT</a></li>
-          <li class="tabs-title buy"><a href="#to-buy">TO BUY</a></li>
-          <li class="tabs-title sort"><a href="#to-sort">TO SORT</a></li>
+          <li class="tabs-title watch"><a href="#1">TO WATCH</a></li>
+          <li class="tabs-title read"><a href="#2">TO READ</a></li>
+          <li class="tabs-title eat"><a href="#4">TO EAT</a></li>
+          <li class="tabs-title buy"><a href="#3">TO BUY</a></li>
+          <li class="tabs-title sort"><a href="#5">TO SORT</a></li>
         </ul>
 
         <!-- TAB CONTENTS HERE -->
         <div class="tabs-content" data-tabs-content="category-tabs">
-          <div class="tabs-panel" id="to-watch">
+          <div class="tabs-panel" id="1">
             <h1>MOVIES</h1>
-            <ul>
+            <ul class="1">
               <li>movie</li>
             </ul>
           </div>
-          <div class="tabs-panel" id="to-read">
+          <div class="tabs-panel" id="2">
             <h1>BOOKS</h1>
-            <ul>
+            <ul class="2">
               <li>book</li>
             </ul>
           </div>
-          <div class="tabs-panel" id="to-eat">
+          <div class="tabs-panel" id="4">
             <h1>RESTAURANTS</h1>
-            <ul>
+            <ul class="4">
               <li>restaurant</li>
             </ul>
           </div>
-          <div class="tabs-panel" id="to-buy">
+          <div class="tabs-panel" id="3">
             <h1>PRODUCTS</h1>
-            <ul>
+            <ul class="3">
               <li>product</li>
             </ul>
           </div>
-          <div class="tabs-panel" id="to-sort">
+          <div class="tabs-panel" id="5">
             <h1>UNCATEGORIZED</h1>
-            <ul>
+            <ul class="5">
               <li>rando</li>
             </ul>
           </div>
