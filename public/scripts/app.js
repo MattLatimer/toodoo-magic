@@ -23,11 +23,26 @@ const userId      = 1;
 
 function renderItems(items) {
   for (let item of items){
-    console.log(item);
     const containerID = "." + item.categories_id;
-    $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id));
+    $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id).append($("<input>").val('Delete').attr('type', 'submit').attr('itemId', item.id)));
   }
 }
+
+
+$(() => {
+  $(`#<$itemId>`).on('click', (e) => {
+    e.preventDefault();
+    let templateVars = {
+      userId: req.session.user_id,
+      itemId: itemId,
+    };
+    $.ajax({
+      url: "/items/`$<:itemId>`",
+      method: "DELETE",
+  })
+})
+
+
 
 // Calls to /general
 function loadItems(){
@@ -36,7 +51,6 @@ function loadItems(){
     method: "GET",
     dataType: "json",
     success: (items) => {
-      // console.log(items);
       renderItems(items);
     }
   })
