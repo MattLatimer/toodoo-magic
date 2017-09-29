@@ -20,7 +20,8 @@ module.exports = (knex) => {
     // req.session = null;
     res.redirect("/");
     console.log("redirected!");
-
+  })
+  
   router.post("/register", (req, res) => {
     // knex
       // send register info
