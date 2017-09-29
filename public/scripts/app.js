@@ -65,31 +65,31 @@ $(() => {
   })
 })
 
-$(() => {
-  $('#user1button').on('click', (e) => {
-    e.preventDefault();
-    $.ajax({
-      url: "/login",
-      method: "POST",
-      data: { user_id: 1 }
-    })
-  })
+// $(() => {
+//   $('#user1button').on('click', (e) => {
+//     e.preventDefault();
+//     $.ajax({
+//       url: "/login",
+//       method: "POST",
+//       data: { user_id: 1 }
+//     })
+//   })
 
-  $('#user2button').on('click', (e) => {
-    e.preventDefault();
-    $.ajax({
-      url: "/login",
-      method: "POST",
-      data: { user_id: 2 }
-    })
-  })
+//   $('#user2button').on('click', (e) => {
+//     e.preventDefault();
+//     $.ajax({
+//       url: "/login",
+//       method: "POST",
+//       data: { user_id: 2 }
+//     })
+//   })
 
-  // $('#logout').on('click', (e) => {
-  //   e.preventDefault();
-  //   $.ajax({
-  //     url: "/logout",
-  //     method: "GET"
-  //   })
-  // })
-});
+//   // $('#logout').on('click', (e) => {
+//   //   e.preventDefault();
+//   //   $.ajax({
+//   //     url: "/logout",
+//   //     method: "GET"
+//   //   })
+//   // })
+// });
 // Calls to /users
