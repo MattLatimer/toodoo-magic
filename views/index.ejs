@@ -2,10 +2,14 @@
 <html lang="en">
   <head>
     <title>Voodoo Magic</title>
-
     <meta name="viewport" content="width=device-width", initial-scale="1">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   </head>
 
   <body>
@@ -14,45 +18,16 @@
           <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
           <input type="submit" value="Add to list" id="addItem">
         </form>
-        <span>LOGO</span>
+        <span class="cursive">Toodoo</span>
         <form action="/login?_method=PUT" method="POST">
-        <input type="submit" value="Login">
+          <input type="submit" value="Login as User 1" id="user1button">
+        </form>
+        <form action="/login?_method=PUT" method="POST">
+         <input type="submit" value="Login as User 2" id="user2button">
         </form>
         <span>USER</span>
       </nav>
       <main>
-<!-- //begin jenny's// -->
-        <!-- <div>
-          <h1>MOVIES</h1>
-          <ul id="movies">
-            <li>movie</li>
-          </ul>
-        </div>
-        <div>
-          <h1>BOOKS</h1>
-          <ul id="books">
-            <li>book</li>
-          </ul>
-        </div>
-        <div>
-          <h1>RESTAURANTS</h1>
-          <ul id="restaurants">
-            <li>restaurant</li>
-          </ul>
-        </div>
-        <div>
-          <h1>PRODUCTS</h1>
-          <ul id="products">
-            <li>product</li>
-          </ul>
-        </div>
-        <div>
-          <h1>UNCATEGORIZED</h1>
-          <ul id="uncategorized">
-            <li>rando</li>
-          </ul> -->
-        <!-- TABS HERE -->
-<!-- jenny's part -->
         <ul class="tabs" data-tabs id="category-tabs">
           <li class="tabs-title watch"><a href="#1">TO WATCH</a></li>
           <li class="tabs-title read"><a href="#2">TO READ</a></li>
@@ -95,6 +70,7 @@
           </div>
         </div>
       </main>
+  <!-- Scripts -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/vendor/foundation.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
