@@ -26,9 +26,27 @@ function renderItems(items) {
     const containerID = "." + item.categories_id;
     $(containerID)
       .append($("<li>")
-        .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)));
+        .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`))
+        .append($("<input>").val('Delete').attr('type', 'submit').attr('itemId', item.id)));
   }
-} 
+}
+
+
+$(() => {
+  $(`#<$itemId>`).on('click', (e) => {
+    e.preventDefault();
+    let templateVars = {
+      userId: req.session.user_id,
+      itemId: itemId
+    };
+    $.ajax({
+      url: "/items/`$<:itemId>`",
+      method: "DELETE"
+    });
+  });
+});
+
+
 
 // Calls to /general
 function loadItems(){
@@ -37,7 +55,6 @@ function loadItems(){
     method: "GET",
     dataType: "json",
     success: (items) => {
-      // console.log(items);
       renderItems(items);
     }
   })
@@ -45,7 +62,7 @@ function loadItems(){
 
 $(() => {
   loadItems();
-})
+});
 
 // Calls to /items
 $(() => {
@@ -62,9 +79,9 @@ $(() => {
         renderItems(item);
         $('#navbar').find('textarea[name="text"]').val('');
       }
-    })
-  })
-})
+    });
+  });
+});
 
 $(() => {
   $('#user1button').on('click', (e) => {
@@ -73,8 +90,8 @@ $(() => {
       url: "/login",
       method: "POST",
       data: { user_id: 1 }
-    })
-  })
+    });
+  });
   
   $('#user2button').on('click', (e) => {
     e.preventDefault();
@@ -82,7 +99,9 @@ $(() => {
       url: "/login",
       method: "POST",
       data: { user_id: 2 }
-    })
+    });
+  });
+});
 
   // $('#logout').on('click', (e) => {
   //   e.preventDefault();
@@ -91,6 +110,4 @@ $(() => {
   //     method: "GET"
   //   })
   // })
-  });
-});
 // Calls to /users
