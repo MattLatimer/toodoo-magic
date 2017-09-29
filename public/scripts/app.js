@@ -91,6 +91,5 @@ $(() => {
   //     method: "GET"
   //   })
   // })
-  });
 });
 // Calls to /users
