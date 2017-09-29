@@ -26,10 +26,6 @@ function renderItems(items) {
     console.log(item);
     const containerID = "." + item.categories_id;
     $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id));
-    // .append($('<button>').attr({class: 'button', type: 'button'}).attr('data-toggle', item.id).text(item.content))
-    // .append($('<div>').attr({class: 'dropdown-pane', id: item.id}).attr('data-dropdown', '').attr('data-auto-focus', 'true')
-    //   .text('THIS IS WHERE THE COOL STUFF GOES!'))
-    // );
   }
 }
 
@@ -68,5 +64,25 @@ $(() => {
     })
   })
 })
+
+$('#user1button').on('click', (blah) => {
+  blah.preventDefault();
+  $.ajax({
+    url: "/login",
+    method: "PUT",
+    data: {user_id: 1}
+  })
+})
+
+$('#user2button').on('click', (blah) => {
+  blah.preventDefault();
+  $.ajax({
+    url: "/login",
+    method: "PUT",
+    data: {user_id: 2}
+  })
+})
+
+
 
 // Calls to /users
