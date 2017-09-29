@@ -23,6 +23,10 @@ const userId      = 1;
 
 function renderItems(items) {
   for (let item of items){
+<<<<<<< HEAD
+=======
+    // console.log(item);
+>>>>>>> 98a8b1559d9df2abbcf0a0a1ab3e723d6dc111ee
     const containerID = "." + item.categories_id;
     $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id).append($("<input>").val('Delete').attr('type', 'submit').attr('itemId', item.id)));
   }
@@ -71,7 +75,7 @@ $(() => {
       data: { itemContent: itemContent, userid: userId }, //<-------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING DONE------------------
       success: function(item) {
         // loadNewItem(item);
-        console.log(item);
+        // console.log(item);
         renderItems(item);
         $('#navbar').find('textarea[name="text"]').val('');
       }
@@ -79,24 +83,31 @@ $(() => {
   })
 })
 
-$('#user1button').on('click', (blah) => {
-  blah.preventDefault();
-  $.ajax({
-    url: "/login",
-    method: "PUT",
-    data: {user_id: 1}
+$(() => {
+  $('#user1button').on('click', (e) => {
+    e.preventDefault();
+    $.ajax({
+      url: "/login",
+      method: "POST",
+      data: { user_id: 1 }
+    })
   })
-})
 
-$('#user2button').on('click', (blah) => {
-  blah.preventDefault();
-  $.ajax({
-    url: "/login",
-    method: "PUT",
-    data: {user_id: 2}
+  $('#user2button').on('click', (e) => {
+    e.preventDefault();
+    $.ajax({
+      url: "/login",
+      method: "POST",
+      data: { user_id: 2 }
+    })
   })
-})
 
-
-
+  // $('#logout').on('click', (e) => {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url: "/logout",
+  //     method: "GET"
+  //   })
+  // })
+});
 // Calls to /users
