@@ -93,7 +93,10 @@ module.exports = (knex) => {
     const categoryId = req.body.categoryId;
     const userId = req.session.user_id;
     knex('items').where({'id': itemId, 'users_id': userId})
-      .update({'content': content, 'categories_id': categoryId});
+      .update({'content': content, 'categories_id': categoryId})
+      .then((result) => {
+        res.redirect('/');
+      });
   });
 
   router.get("/edit/:itemId", (req, res) => {
