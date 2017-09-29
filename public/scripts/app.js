@@ -69,7 +69,7 @@ $('#user1button').on('click', (blah) => {
   blah.preventDefault();
   $.ajax({
     url: "/login",
-    method: "PUT",
+    method: "POST",
     data: {user_id: 1}
   })
 })
@@ -78,7 +78,7 @@ $('#user2button').on('click', (blah) => {
   blah.preventDefault();
   $.ajax({
     url: "/login",
-    method: "PUT",
+    method: "POST",
     data: {user_id: 2}
   })
 })
