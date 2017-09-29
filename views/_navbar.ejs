@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
     <form method="POST" action="/items">
       <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
-      <input type="submit" value="Add to list" id="addItem">
+      <input type="submit" value="Add to list" id="addItem" class="button">
     </form>
     <span class="cursive">Toodoo</span>
 <!--     <form action="/login" method="POST">
@@ -18,14 +9,15 @@
     <form action="/login" method="POST">
      <input type="submit" value="Login as User 2" id="user2button">
     </form> -->
+    <% if (user_id === null) { %>
+      <a href='register' class="button"><button>Register / Login</button></a>
+    <% } %>
     <% if (user_id !== null) { %>
-      <a href='logout'><button>Logout</button></a>
+      <a href='logout' class="button"><button>Logout</button></a>
      <!-- <form action="/logout" method="GET">
       <input type="submit" value="Logout" id="logout">
     </form> -->
     <% } %>
     <span>
-    <%= user_id %>
+    User ID: <%= user_id %>
     </span>
-</body>
-</html>

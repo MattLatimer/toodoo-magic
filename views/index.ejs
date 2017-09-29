@@ -17,47 +17,61 @@
     <% include ./_navbar.ejs %>
     </nav>
       <main>
-        <ul class="tabs" data-tabs id="category-tabs">
+        <div class="row">
+          <!-- <div class="small-1 columns gutter-left">★</div> -->
+          <div class="small-3 columns">TO WATCH
+            <h6 class="1">Movies</h6>
+          </div>
+          <div class="small-2 columns">TO READ
+            <h6 class="2">Books</h6>
+          </div>
+          <div class="small-2 columns">TO EAT
+            <h6 class="3">Restaurants</h6>
+          </div>
+          <div class="small-2 columns">TO BUY
+            <h6 class="4">Products</h6>
+          </div>
+          <div class="small-3 columns">TO SORT
+            <h6 class="5">Uncategorized</h6>
+          </div>
+          <!-- <div class="small-1 columns gutter-right">★</div> -->
+        </div>
+        <!-- <ul class="tabs" data-tabs id="category-tabs">
           <li class="tabs-title watch"><a href="#1">TO WATCH</a></li>
           <li class="tabs-title read"><a href="#2">TO READ</a></li>
           <li class="tabs-title eat"><a href="#3">TO EAT</a></li>
           <li class="tabs-title buy"><a href="#4">TO BUY</a></li>
           <li class="tabs-title sort"><a href="#5">TO SORT</a></li>
-        </ul>
+        </ul> -->
 
         <!-- TAB CONTENTS HERE -->
-        <div class="tabs-content" data-tabs-content="category-tabs">
-          <div class="tabs-panel" id="1">
-            <h1>MOVIES</h1>
-            <ul class="1">
-              <li>movie</li>
+        <!-- <div class="row">
+          <div class="small-2 columns" id="1">
+            <h6>MOVIES</h6>
+              <span>movie</span>
             </ul>
           </div>
-          <div class="tabs-panel" id="2">
-            <h1>BOOKS</h1>
-            <ul class="2">
-              <li>book</li>
+          <div class="small-2 columns" id="2">
+            <h6>BOOKS</h6>
+              <span>book</span>
             </ul>
-          </div>
+          <div class="small-2 columns" id="3">
           <div class="tabs-panel" id="3">
-            <h1>RESTAURANTS</h1>
-            <ul class="3">
-              <li>restaurant</li>
+            <h6>RESTAURANTS</h6>
+              <span>restaurant</span>
             </ul>
           </div>
-          <div class="tabs-panel" id="4">
-            <h1>PRODUCTS</h1>
-            <ul class="4">
-              <li>product</li>
+          <div class="small-2 columns" id="4">
+            <h6>PRODUCTS</h6>
+              <span>product</span>
             </ul>
           </div>
-          <div class="tabs-panel" id="5">
-            <h1>UNCATEGORIZED</h1>
-            <ul class="5">
-              <li>rando</li>
+          <div class="small-2 columns" id="5">
+            <h6>UNCATEGORIZED</h6>
+              <span>rando</span>
             </ul>
           </div>
-        </div>
+        </div> -->
       </main>
   <!-- Scripts -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>

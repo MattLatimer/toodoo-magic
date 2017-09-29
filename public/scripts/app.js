@@ -25,7 +25,7 @@ function renderItems(items) {
   for (let item of items){
     // console.log(item);
     const containerID = "." + item.categories_id;
-    $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id));
+    $(containerID).append($("<p>").text(item.content).attr('data-item-id', item.id));
   }
 }
 
