@@ -79,8 +79,5 @@ module.exports = (knex) => {
   });
 
   return router;
-<<<<<<< HEAD
 };
-=======
-}
->>>>>>> editRoute
+
