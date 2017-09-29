@@ -22,9 +22,13 @@ const userId      = 1;
 // };
 
 function renderItems(items) {
-  for (let item of items){
+
+  for (let item of items) {
     const containerID = "." + item.categories_id;
-    $(containerID).append($("<li>").text(item.content).attr('id', item.id).attr('data-item-id', item.id).append($("<input>").val('Delete').attr('type', 'submit').attr('class', 'test').attr('itemId', item.id)));
+    $(containerID)
+      .append($("<li>")
+        .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
+        .append($("<input>").val('Delete').attr('type', 'submit').attr('class', 'test').attr('itemId', item.id)));
   }
 }
 
@@ -47,6 +51,7 @@ $(() => {
 })
 
 
+
 // Calls to /general
 function loadItems(){
   $.ajax({
@@ -61,7 +66,7 @@ function loadItems(){
 
 $(() => {
   loadItems();
-})
+});
 
 // Calls to /items
 $(() => {
@@ -78,9 +83,9 @@ $(() => {
         renderItems(item);
         $('#navbar').find('textarea[name="text"]').val('');
       }
-    })
-  })
-})
+    });
+  });
+});
 
 $(() => {
   $('#user1button').on('click', (e) => {
@@ -89,17 +94,18 @@ $(() => {
       url: "/login",
       method: "POST",
       data: { user_id: 1 }
-    })
-  })
-
+    });
+  });
+  
   $('#user2button').on('click', (e) => {
     e.preventDefault();
     $.ajax({
       url: "/login",
       method: "POST",
       data: { user_id: 2 }
-    })
-  })
+    });
+  });
+});
 
   // $('#logout').on('click', (e) => {
   //   e.preventDefault();
@@ -108,5 +114,4 @@ $(() => {
   //     method: "GET"
   //   })
   // })
-});
 // Calls to /users
