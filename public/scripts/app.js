@@ -82,7 +82,6 @@ $(() => {
       method: "POST",
       data: { user_id: 2 }
     })
-  })
 
   // $('#logout').on('click', (e) => {
   //   e.preventDefault();
