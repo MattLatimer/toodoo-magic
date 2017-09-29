@@ -2,7 +2,13 @@
 @include foundation-everything;
 
 body {
+  font-family: 'Bree Serif', serif;
   background-color: #EEE;
+
+  .cursive {
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+  }
 
   h1 {
     color: #244751;
