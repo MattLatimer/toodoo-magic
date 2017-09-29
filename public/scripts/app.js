@@ -14,18 +14,17 @@ function renderItem(item) {
 }
 
 const categoryMap = {
-  '1': "movies",
-  '2': "books",
-  '4': "restaurants",
-  '3': "products",
-  '5': "uncategorized"
+  "To Watch": "1",
+  "To Read": "2",
+  "To Eat": "4",
+  "To Buy": "3",
+  "Uncategorized": "5"
 }
 
 function renderItems(items) {
   for (let item of items){
-    // 
-    const containerID = '.' + categoryMap[item.title]
-    $(containerID).append(`<li>`).text(item.content);  
+    const containerID = "." + categoryMap[item.title]
+    $(containerID).append($("<li>").text(item.content));  
   }
 }
 
@@ -36,6 +35,7 @@ function loadItems(){
     method: "GET",
     dataType: "json",
     success: (items) => {
+      // console.log(items);
       renderItems(items);
     }
   })
