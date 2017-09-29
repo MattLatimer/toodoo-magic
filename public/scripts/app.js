@@ -23,8 +23,13 @@ const userId      = 1;
 
 function renderItems(items) {
   for (let item of items){
+    console.log(item);
     const containerID = "." + item.categories_id;
     $(containerID).append($("<li>").text(item.content).attr('data-item-id', item.id));
+    // .append($('<button>').attr({class: 'button', type: 'button'}).attr('data-toggle', item.id).text(item.content))
+    // .append($('<div>').attr({class: 'dropdown-pane', id: item.id}).attr('data-dropdown', '').attr('data-auto-focus', 'true')
+    //   .text('THIS IS WHERE THE COOL STUFF GOES!'))
+    // );
   }
 }
 
