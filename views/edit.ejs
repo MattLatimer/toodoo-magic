@@ -10,26 +10,50 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Edit</h1>
-    <form action="/items/<%= itemId %>?_method=PUT" method="POST">
-     <label for="content">Toodoo:</label>
-     <input type="text" id="content" name="content" value="<%= content %>">
-     <label for="categoryId">Category</label>
-     <select name="categoryId" id="categoryId">
-       <option value="1" <%= (categoryId === 1) ? "selected" : "" %> >To Watch</option>
-       <option value="2" <%= (categoryId === 2) ? "selected" : "" %> >To Read</option>
-       <option value="3" <%= (categoryId === 3) ? "selected" : "" %> >To Eat</option>
-       <option value="4" <%= (categoryId === 4) ? "selected" : "" %> >To Buy</option>
-       <option value="5" <%= (categoryId === 5) ? "selected" : "" %> >Uncategorized</option>
-      </select>
-      <input type="submit" value="Update">
-    </form>
-    <form action="/" method="GET">
-      <input type="submit" value="Cancel">
-    </form>
-      
+
+    <div class="row">
+    <div class="large-4 small-10 large-centered small-centered columns">
+
+    <div class="logobox">
+    <a class="logotext" href="/">Toodoo</a>
+    </div>
+
+    <div class="form-icons">
+      <h4 class="editText">Edit</h4>
+
+      <form action="/items/<%= itemId %>?_method=PUT" method="POST">
+      <div class="input-group">
+        <span class="input-group-label">
+        <label>Toodoo</label>
+        </span>
+        <input type="text" id="content" name="content" value="<%= content %>" class="input-group-field">
+      </div>
+
+      <div>
+        <select name="categoryId" id="categoryId">
+          <option value="1" <%= (categoryId === 1) ? "selected" : "" %> >To Watch</option>
+          <option value="2" <%= (categoryId === 2) ? "selected" : "" %> >To Read</option>
+          <option value="3" <%= (categoryId === 3) ? "selected" : "" %> >To Eat</option>
+          <option value="4" <%= (categoryId === 4) ? "selected" : "" %> >To Buy</option>
+          <option value="5" <%= (categoryId === 5) ? "selected" : "" %> >Uncategorized</option>
+        </select>
+      </div>
+      <button class="button expanded success">Update</button>
+      </form>
+
+      <form action="/" method="GET">
+        <button class="button expanded alert">Cancel</button>
+      </form>
+    </div>
+    </div>
+    </div>
+
+
+
   <!-- Scripts -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/vendor/foundation.js"></script>

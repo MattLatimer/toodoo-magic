@@ -122,52 +122,21 @@ body {
 }
 
 
-
-/*@media screen and (min-width: 64em) {
-
-  .large-2 {
-    background-color: red;
-  }
-  .books {
-    background-color: #fff;
-  }
+.editText {
+  color: $off-white;
+  font-family: $heading-font;
+  margin-top: 1em;
 }
-*/
 
+.logobox {
+  @extend .cursive;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 50px;
 
-
-
-
-
-
-
-
-
-/*  h1 {
-    color: #244751;
-  }*/
-
-/*  .hidden {
-    display: none;
-  }
-
-
-/*  .watch {
-    background-color: #FF7D7D;
-  }
-
-  .read {
-    background-color: #74FF74
-  }
-
-  .eat {
-    background-color: #7070FF
-  }
-
-  .buy {
-    background-color: #FFFF70;
-  }
-
-  .sort {
-    background-color: #9E9E9E;
-  }*/
+    .logotext {
+      &:hover {
+        color: #a7a7a7;
+      }
+    }
+}
