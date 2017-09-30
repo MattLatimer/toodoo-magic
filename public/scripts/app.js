@@ -34,14 +34,15 @@ function renderItems(items) {
 }
 
 $(() => {
-  $('.tabs-panel').on('click', '.test', (e) => {
+  $('.row').on('click', '.test', (e) => {
     e.preventDefault();
     const itemId = $('.test').attr('itemid');
     $.ajax({
       url: '/items/' + itemId,
       method: "DELETE", 
       success: function(result){
-        alert('You have deleted the item!',result);
+        console.log("success");
+        // alert('You have deleted the item!',result);
         $('#'+itemId).remove();
       },
       error:function(error){
