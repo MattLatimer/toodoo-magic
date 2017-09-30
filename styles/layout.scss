@@ -1,13 +1,13 @@
 @import 'node_modules/foundation-sites/scss/foundation';
 @include foundation-everything(false);
 
-.top-bar {
+/*.top-bar {
   width: 100%;
 }
 
 form{
   display: inline-flex;
-}
+}*/
 
 body {
   font-family: 'Bree Serif', serif;
@@ -16,18 +16,17 @@ body {
   .cursive {
     font-family: 'Lobster', cursive;
     font-size: 40px;
-    text-align: center;
   }
 
-  .row {
+/*  .row {
     text-align: center;
-  }
+  }*/
 
-  h1 {
+/*  h1 {
     color: #244751;
-  }
+  }*/
 
-  .hidden {
+/*  .hidden {
     display: none;
   }
 
@@ -49,9 +48,9 @@ body {
 
   // .columns {
   //   border: 1px solid black;
-  // }
+  // }*/
 
-  .watch {
+/*  .watch {
     background-color: #FF7D7D;
   }
 
@@ -69,6 +68,6 @@ body {
 
   .sort {
     background-color: #9E9E9E;
-  }
+  }*/
 
 }
