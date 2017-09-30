@@ -28,7 +28,7 @@ function renderItems(items) {
     $(containerID)
       .append($("<p>")
         .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
-        .append($("<input>").val('Delete').attr('type', 'submit').attr('class', 'test').attr('itemId', item.id)));
+        .append($("<input>").val('x').attr('type', 'submit').attr('class', 'test button alert tiny').attr('itemId', item.id)));
     // $(containerID).append($("<p>").text(item.content).attr('data-item-id', item.id));
   }
 }
@@ -104,7 +104,7 @@ $(() => {
 //       data: { user_id: 1 }
 //     });
 //   });
-  
+
 //   $('#user2button').on('click', (e) => {
 //     e.preventDefault();
 //     $.ajax({
