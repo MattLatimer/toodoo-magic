@@ -41,7 +41,7 @@ $(() => {
       url: '/items/' + itemId,
       method: "DELETE", 
       success: function(result) {
-        if (item.loggedIn === 'false') {
+        if (result.loggedIn === 'false') {
           location.href = 'http://localhost:8080/register';
         } else {
         // console.log("success");
