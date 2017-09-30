@@ -14,18 +14,16 @@ module.exports = (knex) => {
     res.render("index");
   })
 
-  router.post("/login", (req, res) => {
-    req.session.user_id = req.body.user_id;
-    res.locals.user_id = req.body.user_id;
+  router.get("/login", (req, res) => {
+    req.session.user_id = 1;
+    res.locals.user_id = 1;
     // req.session = null;
-    res.redirect("/");
     console.log("redirected!");
     res.redirect("/");
   })
 
   router.post("/register", (req, res) => {
-    // knex
-      // send register info
+
   })
 
   router.get("/register", (req, res) => {
@@ -36,7 +34,7 @@ module.exports = (knex) => {
     req.session.user_id = null;
     res.locals.user_id = undefined;
     // req.session = null;
-    res.redirect("/");
+    res.redirect("/register");
     console.log("redirected!");
   })
 

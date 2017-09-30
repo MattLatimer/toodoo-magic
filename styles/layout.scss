@@ -1,5 +1,5 @@
 @import 'node_modules/foundation-sites/scss/foundation';
-@include foundation-everything;
+@include foundation-everything(false);
 
 body {
   font-family: 'Bree Serif', serif;
@@ -11,6 +11,10 @@ body {
     text-align: center;
   }
 
+  .row {
+    text-align: center;
+  }
+
   h1 {
     color: #244751;
   }
@@ -19,11 +23,25 @@ body {
     display: none;
   }
 
-  .tabs-title {
-    a {
-      font: 200%;
-    }
-  }
+  // h6 {
+  //   text-align: center;
+  // }
+
+  // p {
+  //   text-align: center;
+  // }
+
+  // .gutter-left {
+  //   text-align: left;
+  // }
+
+  // .gutter-right {
+  //   text-align: right;
+  // }
+
+  // .columns {
+  //   border: 1px solid black;
+  // }
 
   .watch {
     background-color: #FF7D7D;
@@ -43,6 +61,11 @@ body {
 
   .sort {
     background-color: #9E9E9E;
-    
   }
+
+#navbar form {
+  display: inline-flex;
+}
+
+
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,20 +10,62 @@
     <form method="POST" action="/items">
       <textarea name="text" id="todoForm" placeholder="watch Silence of the Lambs"></textarea>
       <input type="submit" value="Add to list" id="addItem">
-    </form>
+    </form> -->
+<nav id="navbar" class="top-bar">
+  <div class="top-bar-left">
+  <!-- <div class="large-5 small-6 columns"> -->
+  <form method="POST" action="/items">
+      <input type="text" placeholder="watch Silence of the Lambs">
+      <a href="#" class="button postfix">Add to List</a>
+  </form>
+  <!-- </div> -->
+  </div>
+
+<!--   <form method="POST" action="/items">
+    <input type="text" placeholder="watch Silence of the Lambs">
+    <a href="#" class="button postfix" id="addItem">Add to list</a>
+  </form>
+  </div> -->
+
+    <div class="large-6 small-8 large-centered columns">
     <span class="cursive">Toodoo</span>
-    <form action="/login" method="POST">
+    </div>
+
+    <div class="top-bar-right">
+    <!-- <div class="large-3 small-1 columns"> -->
+    <% if (user_id !== null) { %>
+      <a href='logout'><button>Logout</button></a>
+    <% } %>
+
+    <span><%= user_id %></span>
+    <!-- </div> -->
+    </div>
+</nav>
+
+
+<!--     <form action="/login" method="POST">
       <input type="submit" value="Login as User 1" id="user1button">
     </form>
     <form action="/login" method="POST">
      <input type="submit" value="Login as User 2" id="user2button">
-    </form>
+    </form> -->
+    <% if (user_id === null) { %>
+      <a href='register' class="button"><button>Register / Login</button></a>
+    <% } %>
     <% if (user_id !== null) { %>
-      <a href='logout'><button>Logout</button></a>
-    <!-- <form action="/logout" method="GET">
+      <a href='logout' class="button"><button>Logout</button></a>
+     <!-- <form action="/logout" method="GET">
       <input type="submit" value="Logout" id="logout">
     </form> -->
     <% } %>
-    <span>USER</span>
-</body>
-</html>
+    <span>
+    User ID: <%= user_id %>
+    </span>
+
+
+
+
+
+<!-- <form action="/logout" method="GET">
+    //   <input type="submit" value="Logout" id="logout">
+    // </form> -->

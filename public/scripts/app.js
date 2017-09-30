@@ -26,9 +26,10 @@ function renderItems(items) {
   for (let item of items) {
     const containerID = "." + item.categories_id;
     $(containerID)
-      .append($("<li>")
+      .append($("<p>")
         .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
         .append($("<input>").val('Delete').attr('type', 'submit').attr('class', 'test').attr('itemId', item.id)));
+    // $(containerID).append($("<p>").text(item.content).attr('data-item-id', item.id));
   }
 }
 
@@ -85,25 +86,25 @@ $(() => {
   });
 });
 
-$(() => {
-  $('#user1button').on('click', (e) => {
-    e.preventDefault();
-    $.ajax({
-      url: "/login",
-      method: "POST",
-      data: { user_id: 1 }
-    });
-  });
+// $(() => {
+//   $('#user1button').on('click', (e) => {
+//     e.preventDefault();
+//     $.ajax({
+//       url: "/login",
+//       method: "POST",
+//       data: { user_id: 1 }
+//     });
+//   });
   
-  $('#user2button').on('click', (e) => {
-    e.preventDefault();
-    $.ajax({
-      url: "/login",
-      method: "POST",
-      data: { user_id: 2 }
-    });
-  });
-});
+//   $('#user2button').on('click', (e) => {
+//     e.preventDefault();
+//     $.ajax({
+//       url: "/login",
+//       method: "POST",
+//       data: { user_id: 2 }
+//     });
+//   });
+// });
 
   // $('#logout').on('click', (e) => {
   //   e.preventDefault();
