@@ -51,6 +51,7 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     const keyword = getKeyword(req.body.itemContent);
+
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {
         console.log('Error finding category from keyword');

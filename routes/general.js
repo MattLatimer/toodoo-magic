@@ -11,6 +11,9 @@ module.exports = (knex) => {
     // render login page if not logged in
     // res.render("login");
     // else render app
+    if(!res.locals.user_id) {
+      res.render('register');
+    }
     res.render("index");
   })
 
