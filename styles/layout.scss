@@ -15,7 +15,7 @@ $abyss-black: #252525;
 
 
 .top-bar, .top-bar ul {
-  background-color: $voodoo-purple;
+  background-color: #372040;
 }
 
 .cursive {
@@ -24,13 +24,18 @@ $abyss-black: #252525;
   color: $off-white;
 }
 
+#todoForm {
+  background-color: #6c5977;
+  &:onclick { background-color: $off-white;}
+}
+
 .logout {
   color: $off-white;
 }
 
 body {
   font-family: $heading-font;
-  background-color: $background-grey;
+  background-color: $voodoo-purple;
 
   h5 {
     font-family: $heading-font;
@@ -48,34 +53,60 @@ body {
     text-align: left;
     padding-left: 1em;
     padding-right: 1em;
-    &:hover {
-      background-color: lighten($abyss-black, 50%);
-    }
   }
 
   .movies {
     background-color: $movie-blue;
     border-radius: 5px;
+
+    p {
+      &:hover {
+        background-color: darken($movie-blue, 5%);
+      }
+    }
   }
 
   .books {
     background-color: $book-red;
     border-radius: 5px;
+
+    p {
+      &:hover {
+        background-color: darken($book-red, 5%);
+      }
+    }
   }
 
   .food {
     background-color: $food-green;
     border-radius: 5px;
+
+    p {
+      &:hover {
+        background-color: darken($food-green, 5%);
+      }
+    }
   }
 
   .products {
     background-color: $product-yellow;
     border-radius: 5px;
+    p {
+      &:hover {
+        background-color: darken($product-yellow, 5%);
+      }
+    }
   }
 
   .unsorted {
     background-color: $abyss-black;
     border-radius: 5px;
+
+    p {
+      &:hover {
+        background-color: lighten($abyss-black, 5%);
+      }
+    }
   }
 }
 
