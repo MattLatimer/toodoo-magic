@@ -21,6 +21,18 @@ module.exports = (knex) => {
       return str;
     }
   }
+  // stripKeyword: strips the verb and returns the noun
+  function stripKeyword(str) {
+    const verb = getKeyword(str);
+    const words = str.split(' ');
+    let stripped = [];
+    words.forEach((word) => {
+      if (word !== verb) {
+        stripped.push(word);
+      }
+    })
+    return stripped.join(' ');
+  }
 
   router.get("/", (req, res) => {
     knex.select('id', 'content', 'categories_id')
@@ -90,7 +102,8 @@ module.exports = (knex) => {
           // Verb query success
           res.locals.category = result[0]['categories_id'];
           res.locals.userid = req.session.user_id;
-          knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: res.locals.userid}])
+          const strippedContent = stripKeyword(req.body.itemContent);
+          knex('items').insert([{categories_id: res.locals.category, content: strippedContent, users_id: res.locals.userid}])
           .returning(['id', 'content', 'categories_id']).asCallback((err, result) => {
             if (err) {
               throw err;
