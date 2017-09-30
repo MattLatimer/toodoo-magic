@@ -40,10 +40,14 @@ $(() => {
     $.ajax({
       url: '/items/' + itemId,
       method: "DELETE", 
-      success: function(result){
-        console.log("success");
+      success: function(result) {
+        if (item.loggedIn === 'false') {
+          location.href = 'http://localhost:8080/register';
+        } else {
+        // console.log("success");
         // alert('You have deleted the item!',result);
-        $('#'+itemId).remove();
+          $('#'+itemId).remove();
+        }
       },
       error:function(error){
         console.log("error occurred ",error);
@@ -58,7 +62,7 @@ function loadItems(){
     url: "/items",
     method: "GET",
     dataType: "json",
-    success: (items) => {
+    success: function(items) {
       renderItems(items);
     }
   })
@@ -80,8 +84,12 @@ $(() => {
       success: function(item) {
         // loadNewItem(item);
         // console.log(item);
-        renderItems(item);
-        $('#navbar').find('textarea[name="text"]').val('');
+        if (item.loggedIn === 'false') {
+          location.href = 'http://localhost:8080/register';
+        } else {
+          renderItems(item);
+          $('#navbar').find('textarea[name="text"]').val('');
+        }
       }
     });
   });
