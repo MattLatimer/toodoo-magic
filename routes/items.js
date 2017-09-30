@@ -38,17 +38,17 @@ module.exports = (knex) => {
   router.post("/", (req, res) => {
     const keyword = getKeyword(req.body.itemContent);
 
-    // WOLFRAM API CALL
-    request(`http://www.wolframalpha.com/queryrecognizer/query.jsp?appid=DEMO&mode=Default&i=${keyword}&output=json`, (err, res, body) => {
-      knex('wkeywords').select('categories_id').where('wkey', body.query[0].domain).asCallback((error, result) => {
-        if (err) {
-          console.log('Error', error);
-        } else {
-          console.log('Domain', result)
-        }
-      })
-    })
-    
+    // // WOLFRAM API CALL
+    // request(`http://www.wolframalpha.com/queryrecognizer/query.jsp?appid=DEMO&mode=Default&i=${keyword}&output=json`, (err, res, body) => {
+    //   knex('wkeywords').select('categories_id').where('wkey', body.query[0].domain).asCallback((error, result) => {
+    //     if (err) {
+    //       console.log('Error', error);
+    //     } else {
+    //       console.log('Domain', result)
+    //     }
+    //   })
+    // })
+
 
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {

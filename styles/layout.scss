@@ -1,26 +1,87 @@
 @import 'node_modules/foundation-sites/scss/foundation';
 @include foundation-everything(false);
 
-/*.top-bar {
-  width: 100%;
+$voodoo-purple: #53345f;
+$off-white: #eee;
+$logo-font: 'Lobster', cursive;
+$heading-font: 'Montserrat', serif;
+
+
+
+.top-bar, .top-bar ul {
+  background-color: $voodoo-purple;
 }
 
-form{
-  display: inline-flex;
-}*/
+.cursive {
+  font-family: $logo-font;
+  font-size: 40px;
+  color: $off-white;
+}
+
+.logout {
+  color: $off-white;
+}
 
 body {
-  font-family: 'Bree Serif', serif;
-  background-color: #EEE;
+  font-family: $heading-font;
+  background-color: #cccccc;
 
-  .cursive {
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
+  h5 {
+    font-family: $heading-font;
+    color: $off-white;
   }
 
-/*  .row {
-    text-align: center;
-  }*/
+  .movies {
+    background-color: #14679e;
+    border-radius: 5px;
+  }
+
+  .books {
+    background-color: #b33030;
+    border-radius: 5px;
+  }
+
+  .food {
+    background-color: #157539;
+    border-radius: 5px;
+  }
+
+  .products {
+    background-color: #efab31;
+    border-radius: 5px;
+  }
+
+  .unsorted {
+    background-color: $off-white;
+    border-radius: 5px;
+    color: black;
+  }
+}
+
+.categories {
+  text-align: center;
+}
+
+
+/*@media screen and (min-width: 64em) {
+
+  .large-2 {
+    background-color: red;
+  }
+  .books {
+    background-color: #fff;
+  }
+}
+*/
+
+
+
+
+
+
+
+
+
 
 /*  h1 {
     color: #244751;
@@ -30,25 +91,6 @@ body {
     display: none;
   }
 
-  // h6 {
-  //   text-align: center;
-  // }
-
-  // p {
-  //   text-align: center;
-  // }
-
-  // .gutter-left {
-  //   text-align: left;
-  // }
-
-  // .gutter-right {
-  //   text-align: right;
-  // }
-
-  // .columns {
-  //   border: 1px solid black;
-  // }*/
 
 /*  .watch {
     background-color: #FF7D7D;
@@ -69,5 +111,3 @@ body {
   .sort {
     background-color: #9E9E9E;
   }*/
-
-}

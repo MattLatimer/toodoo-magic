@@ -39,7 +39,7 @@ $(() => {
     const itemId = $(e.target).attr('itemid');
     $.ajax({
       url: '/items/' + itemId,
-      method: "DELETE", 
+      method: "DELETE",
       success: function(result){
         console.log("success");
         // alert('You have deleted the item!',result);
@@ -96,7 +96,7 @@ $(() => {
 //       data: { user_id: 1 }
 //     });
 //   });
-  
+
 //   $('#user2button').on('click', (e) => {
 //     e.preventDefault();
 //     $.ajax({
