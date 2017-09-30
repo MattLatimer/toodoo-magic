@@ -97,6 +97,29 @@ $(() => {
   });
 });
 
+
+// REGISTERING
+$(() => {
+  $('.register').on('click', (e) => {
+    e.preventDefault();
+    const name = $('#regName').val();
+    const email = $('#regEmail').val();
+    const password = $('#regPW').val();
+    $.ajax({
+      url: '/register',
+      method: "POST", 
+      data: {email: email, password: password, name: name},
+      success: function(result){
+        console.log("Success Registration");
+      },
+      error: function(error){
+        $('#errormessage').append($('<p>').text('Email can not be used.'));
+        console.log("error occurred while registering ");
+      }
+    });
+  })
+})
+
 // $(() => {
 //   $('#user1button').on('click', (e) => {
 //     e.preventDefault();
