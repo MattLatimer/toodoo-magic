@@ -89,7 +89,7 @@ $(() => {
             location.href = 'http://localhost:8080/register';
           } else {
             renderItems(item);
-            $('#navbar').find('textarea[name="text"]').val('');
+            $('#todoForm').val('');
           }
         }
       });
