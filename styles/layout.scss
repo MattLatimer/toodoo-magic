@@ -1,74 +1,142 @@
 @import 'node_modules/foundation-sites/scss/foundation';
 @include foundation-everything(false);
 
-.top-bar {
-  width: 100%;
+$voodoo-purple: #53345f;
+$off-white: #eee;
+$background-grey: #cccccc;
+$logo-font: 'Lobster', cursive;
+$heading-font: 'Montserrat', serif;
+$movie-blue: #14679e;
+$book-red: #b33030;
+$food-green: #157539;
+$product-yellow: #efab31;
+$abyss-black: #252525;
+
+
+
+.top-bar, .top-bar ul {
+  background-color: #372040;
 }
 
-form{
-  display: inline-flex;
+.cursive {
+  font-family: $logo-font;
+  font-size: 40px;
+  color: $off-white;
+}
+
+#todoForm {
+  background-color: #6c5977;
+  &:onclick { background-color: $off-white;}
+}
+
+.logout {
+  color: $off-white;
 }
 
 body {
-  font-family: 'Bree Serif', serif;
-  background-color: #EEE;
+  font-family: $heading-font;
+  background-color: $voodoo-purple;
 
-  .cursive {
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
-    text-align: center;
+  h5 {
+    font-family: $heading-font;
+    color: $off-white;
+        text-align: center;
   }
 
-  .row {
-    text-align: center;
+  a {
+    color: $off-white;
+    font-size: 0.75em;
+    overflow-wrap: break-word;
   }
 
-  h1 {
-    color: #244751;
+  p {
+    text-align: left;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 
-  .hidden {
-    display: none;
+  .movies {
+    background-color: $movie-blue;
+    border-radius: 5px;
+
+    p {
+      &:hover {
+        background-color: darken($movie-blue, 5%);
+      }
+    }
   }
 
-  // h6 {
-  //   text-align: center;
-  // }
+  .books {
+    background-color: $book-red;
+    border-radius: 5px;
 
-  // p {
-  //   text-align: center;
-  // }
-
-  // .gutter-left {
-  //   text-align: left;
-  // }
-
-  // .gutter-right {
-  //   text-align: right;
-  // }
-
-  // .columns {
-  //   border: 1px solid black;
-  // }
-
-  .watch {
-    background-color: #FF7D7D;
+    p {
+      &:hover {
+        background-color: darken($book-red, 5%);
+      }
+    }
   }
 
-  .read {
-    background-color: #74FF74
+  .food {
+    background-color: $food-green;
+    border-radius: 5px;
+
+    p {
+      &:hover {
+        background-color: darken($food-green, 5%);
+      }
+    }
   }
 
-  .eat {
-    background-color: #7070FF
+  .products {
+    background-color: $product-yellow;
+    border-radius: 5px;
+    p {
+      &:hover {
+        background-color: darken($product-yellow, 5%);
+      }
+    }
   }
 
-  .buy {
-    background-color: #FFFF70;
-  }
+  .unsorted {
+    background-color: $abyss-black;
+    border-radius: 5px;
 
-  .sort {
-    background-color: #9E9E9E;
+    p {
+      &:hover {
+        background-color: lighten($abyss-black, 5%);
+      }
+    }
   }
+}
 
+.categories {
+  margin-top: 1em;
+}
+
+.test {
+  border-radius: 100%;
+  margin-left: 1em;
+  vertical-align: text-top;
+  padding: 0.35em 0.5em;
+}
+
+
+.editText {
+  color: $off-white;
+  font-family: $heading-font;
+  margin-top: 1em;
+}
+
+.logobox {
+  @extend .cursive;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 50px;
+
+    .logotext {
+      &:hover {
+        color: #a7a7a7;
+      }
+    }
 }

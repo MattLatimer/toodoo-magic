@@ -28,7 +28,7 @@ function renderItems(items) {
     $(containerID)
       .append($("<p>")
         .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
-        .append($("<input>").val('Delete').attr('type', 'submit').attr('class', 'test').attr('itemId', item.id)));
+        .append($("<input>").val('x').attr('type', 'submit').attr('class', 'test button alert tiny').attr('itemId', item.id)));
     // $(containerID).append($("<p>").text(item.content).attr('data-item-id', item.id));
   }
 }
@@ -40,8 +40,14 @@ $(() => {
     $.ajax({
       url: '/items/' + itemId,
       method: "DELETE", 
-      success: function(result){
-        $('#'+itemId).remove();
+      success: function(result) {
+        if (result.loggedIn === 'false') {
+          location.href = 'http://localhost:8080/register';
+        } else {
+        // console.log("success");
+        // alert('You have deleted the item!',result);
+          $('#'+itemId).remove();
+        }
       },
       error:function(error){
         console.log("error occurred ",error);
@@ -56,7 +62,7 @@ function loadItems(){
     url: "/items",
     method: "GET",
     dataType: "json",
-    success: (items) => {
+    success: function(items) {
       renderItems(items);
     }
   })
@@ -71,17 +77,23 @@ $(() => {
   $('#addItem').on('click', (e) => {
     e.preventDefault();
     const itemContent = $('#todoForm').val();
-    $.ajax({
-      url: "/items",
-      method: "POST",
-      data: { itemContent: itemContent, userid: userId }, //<-------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING DONE------------------
-      success: function(item) {
-        // loadNewItem(item);
-        // console.log(item);
-        renderItems(item);
-        $('#navbar').find('textarea[name="text"]').val('');
-      }
-    });
+    if (itemContent) {
+      $.ajax({
+        url: "/items",
+        method: "POST",
+        data: { itemContent: itemContent, userid: userId }, //<-------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING DONE------------------
+        success: function(item) {
+          // loadNewItem(item);
+          // console.log(item);
+          if (item.loggedIn === 'false') {
+            location.href = 'http://localhost:8080/register';
+          } else {
+            renderItems(item);
+            $('#todoForm').val('');
+          }
+        }
+      });
+    }
   });
 });
 
@@ -117,7 +129,7 @@ $(() => {
 //       data: { user_id: 1 }
 //     });
 //   });
-  
+
 //   $('#user2button').on('click', (e) => {
 //     e.preventDefault();
 //     $.ajax({

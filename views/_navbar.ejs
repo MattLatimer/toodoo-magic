@@ -1,55 +1,31 @@
 
 <nav id="navbar">
 
-
-<div class="top-bar">
+<div class="top-bar topbar-center-logo" id="topbar-center-logo">
+  <div class="top-bar-left">
+    <span class="cursive" >Toodoo</span>
+  </div>
   <div class="top-bar-left">
     <ul class="menu">
-      <form method="POST" action="/items">
-        <li><textarea name="text" id="todoForm" placeholder="watch Pokemon"></textarea></li>
-       <li> <input class="default button" type="submit" value="Add to List" id="addItem"></li>
-      </form>
+      <li class="has-form">
+      <div class="row collapse">
+        <div class="large-8 small-9 columns">
+          <input id="todoForm" type="text" placeholder="watch Pokemon">
+        </div>
+        <div class="large-4 small-3 columns">
+          <a id="addItem" href="#" class="success button small">Add to List</a>
+        </div>
+      </div>
+      </li>
     </ul>
-  </div>
-
-  <div class="top-bar-left">
-  <span class="cursive" >Toodoo</span>
   </div>
 
   <div class="top-bar-right">
-    <ul class="menu vertical">
-      <li><a href="logout"><button>Logout</button></a></li>
-      <!-- <li><span><%= user_id %></span></li>
+    <ul class="menu vertical medium-horizontal">
+    <li><a href="logout"><button class="logout">Logout</button></a></li>
     </ul>
   </div>
-</div> -->
-
-
-
-<!--
-<div class="top-bar-container" data-sticky-container>
-  <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <form method="POST" action="/items">
-          <li><textarea name="text" id="todoForm" placeholder="watch Pokemon"></textarea></li>
-          <li><input type="submit" value="Add to List" id="addItem"></li>
-          </form>
-        </ul>
-      </div>
-
-      <div>
-      <span class="cursive">Toodoo</span>
-      </div>
-
-      <div class="top-bar-right">
-        <a href='logout'><button>Logout</button></a>
-        <span>User <%= user_id %></span>
-      </div>
-    </div>
-  </div>
-</div> -->
+</div>
 
 </nav>
 
