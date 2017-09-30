@@ -23,11 +23,13 @@ module.exports = (knex) => {
   }
   // stripKeyword: strips the verb and returns the noun
   function stripKeyword(str) {
-    const verb = getKeyword(str);
+    let verb = getKeyword(str);
     const words = str.split(' ');
     let stripped = [];
     words.forEach((word) => {
-      if (word !== verb) {
+      if (word === verb) {
+        verb = '';
+      } else {
         stripped.push(word);
       }
     })
