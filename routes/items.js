@@ -5,7 +5,7 @@ const router  = express.Router();
 const request = require('request');
 
 // localhost:8080/items/
-/*need to add middleware for user id and plug into all router */
+// need to add middleware for user id and plug into all router
 
 module.exports = (knex) => {
   // Helper functions
@@ -20,6 +20,18 @@ module.exports = (knex) => {
     } else {
       return str;
     }
+  }
+  // stripKeyword: strips the verb and returns the noun
+  function stripKeyword(str) {
+    const verb = getKeyword(str);
+    const words = str.split(' ');
+    let stripped = [];
+    words.forEach((word) => {
+      if (word !== verb) {
+        stripped.push(word);
+      }
+    })
+    return stripped.join(' ');
   }
 
   router.get("/", (req, res) => {
@@ -38,53 +50,79 @@ module.exports = (knex) => {
   router.post("/", (req, res) => {
     const keyword = getKeyword(req.body.itemContent);
 
-    // // WOLFRAM API CALL
-    // request(`http://www.wolframalpha.com/queryrecognizer/query.jsp?appid=DEMO&mode=Default&i=${keyword}&output=json`, (err, res, body) => {
-    //   knex('wkeywords').select('categories_id').where('wkey', body.query[0].domain).asCallback((error, result) => {
-    //     if (err) {
-    //       console.log('Error', error);
-    //     } else {
-    //       console.log('Domain', result)
-    //     }
-    //   })
-    // })
-
-
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {
         console.log('Error finding category from keyword');
         throw err;
       } else {
+        // Begin categorization if no error
         if (result.length === 0) {
-          res.locals.category = 5;
+          // If no results from verb query, begin Wolfram API call
+          request(`http://www.wolframalpha.com/queryrecognizer/query.jsp?appid=DEMO&mode=Default&i=${keyword}&output=json`, (err, result, body) => {
+            const wolframObj = JSON.parse(body);
+            const domainKeyword = wolframObj.query[0].domain;
+            if (domainKeyword === undefined) {
+              // If Wolfram API does not have a good answer
+              res.locals.category = 5;
+              res.locals.userid = req.session.user_id;
+              knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: res.locals.userid}])
+              .returning(['id', 'content', 'categories_id']).asCallback((err, result) => {
+                if (err) {
+                  throw err;
+                } else {
+                  knex('items').where('id', result[0].id)
+                    .then(res.status(201).send(result));
+                }
+              });
+            } else {
+              // Category matching with Wolfram domain
+              knex('wkeywords').select('categories_id').where('wkey', domainKeyword).asCallback((error, result) => {
+                if (err) {
+                  throw err;
+                } else {
+                  let domainId = 5;
+                  if (result.length !== 0) {
+                    domainId = result[0].categories_id;
+                  }
+                  res.locals.category = domainId;
+                  res.locals.userid = req.session.user_id;
+                  knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: res.locals.userid}])
+                  .returning(['id', 'content', 'categories_id']).asCallback((err, result) => {
+                    if (err) {
+                      throw err;
+                    } else {
+                      knex('items').where('id', result[0].id)
+                        .then(res.status(201).send(result));
+                    }
+                  });
+                }
+              })
+            }
+          })
         } else {
+          // Verb query success
           res.locals.category = result[0]['categories_id'];
-        }
-        console.log('Category is:', res.locals.category);
-        res.locals.userid = req.session.user_id;
-        knex('items').insert([{categories_id: res.locals.category, content: req.body.itemContent, users_id: res.locals.userid}])
+          res.locals.userid = req.session.user_id;
+          const strippedContent = stripKeyword(req.body.itemContent);
+          knex('items').insert([{categories_id: res.locals.category, content: strippedContent, users_id: res.locals.userid}])
           .returning(['id', 'content', 'categories_id']).asCallback((err, result) => {
             if (err) {
               throw err;
             } else {
-              console.log(result);
               knex('items').where('id', result[0].id)
                 .then(res.status(201).send(result));
             }
           });
+        }
       }
     });
-    // knex('id', 'content', 'categories_id').from('items').where('user_id')
-    // const { itemContent, catid, userid } = req.body;
-    // console.log(`${itemContent}, ${catid}, ${userid}`);
   });
 
   router.delete("/:itemId", (req, res) => {
-    //DELETE FUNCTION//
     const userId = req.session.user_id;
     const itemId = req.params.itemId;
-    console.log("my values ",userId, itemId);
-    //console.log (res.locals.user_id, itemId);
+    // console.log("my values ",userId, itemId);
+    // console.log (res.locals.user_id, itemId);
     knex('items')
     .where ("users_id", userId)
     .andWhere("id",itemId)
