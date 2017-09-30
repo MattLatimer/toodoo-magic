@@ -29,6 +29,17 @@ body {
   h5 {
     font-family: $heading-font;
     color: $off-white;
+        text-align: center;
+  }
+
+  a {
+    color: $off-white;
+    font-size: 0.75em;
+  }
+
+  p {
+    text-align: left;
+    padding-left: 1em;
   }
 
   .movies {
@@ -52,15 +63,22 @@ body {
   }
 
   .unsorted {
-    background-color: $off-white;
+    background-color: black;
     border-radius: 5px;
-    color: black;
   }
 }
 
 .categories {
-  text-align: center;
+  margin-top: 1em;
 }
+
+.test {
+  border-radius: 100%;
+  margin-left: 1em;
+  vertical-align: text-top;
+  padding: 0.35em 0.5em;
+}
+
 
 
 /*@media screen and (min-width: 64em) {
