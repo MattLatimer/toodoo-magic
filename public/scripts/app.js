@@ -81,7 +81,7 @@ $(() => {
         // loadNewItem(item);
         // console.log(item);
         renderItems(item);
-        $('#navbar').find('textarea[name="text"]').val('');
+        $('#todoForm').val('');
       }
     });
   });
