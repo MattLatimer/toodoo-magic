@@ -3,7 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 const request = require('request');
-const user    = require('../public/scripts/checkLogin');
+const user    = require('../lib/checkLogin');
 
 // localhost:8080/items/
 // need to add middleware for user id and plug into all router
