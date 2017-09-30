@@ -3,8 +3,14 @@
 
 $voodoo-purple: #53345f;
 $off-white: #eee;
+$background-grey: #cccccc;
 $logo-font: 'Lobster', cursive;
 $heading-font: 'Montserrat', serif;
+$movie-blue: #14679e;
+$book-red: #b33030;
+$food-green: #157539;
+$product-yellow: #efab31;
+$abyss-black: #252525;
 
 
 
@@ -24,7 +30,7 @@ $heading-font: 'Montserrat', serif;
 
 body {
   font-family: $heading-font;
-  background-color: #cccccc;
+  background-color: $background-grey;
 
   h5 {
     font-family: $heading-font;
@@ -35,35 +41,40 @@ body {
   a {
     color: $off-white;
     font-size: 0.75em;
+    overflow-wrap: break-word;
   }
 
   p {
     text-align: left;
     padding-left: 1em;
+    padding-right: 1em;
+    &:hover {
+      background-color: lighten($abyss-black, 50%);
+    }
   }
 
   .movies {
-    background-color: #14679e;
+    background-color: $movie-blue;
     border-radius: 5px;
   }
 
   .books {
-    background-color: #b33030;
+    background-color: $book-red;
     border-radius: 5px;
   }
 
   .food {
-    background-color: #157539;
+    background-color: $food-green;
     border-radius: 5px;
   }
 
   .products {
-    background-color: #efab31;
+    background-color: $product-yellow;
     border-radius: 5px;
   }
 
   .unsorted {
-    background-color: black;
+    background-color: $abyss-black;
     border-radius: 5px;
   }
 }

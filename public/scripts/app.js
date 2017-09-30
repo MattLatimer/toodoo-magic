@@ -28,7 +28,7 @@ function renderItems(items) {
     $(containerID)
       .append($("<p>")
         .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
-        .append($("<input>").val('X').attr('type', 'submit').attr('class', 'test button alert tiny').attr('itemId', item.id)));
+        .append($("<input>").val('x').attr('type', 'submit').attr('class', 'test button alert tiny').attr('itemId', item.id)));
     // $(containerID).append($("<p>").text(item.content).attr('data-item-id', item.id));
   }
 }
