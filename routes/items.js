@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const http    = require('http');
 
 // localhost:8080/items/
 /*need to add middleware for user id and plug into all router */
@@ -36,6 +37,12 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     const keyword = getKeyword(req.body.itemContent);
+
+    // WOLFRAM API CALL
+    // http.get(`http://www.wolframalpha.com/queryrecognizer/query.jsp?appid=DEMO&mode=Default&i=${keyword}&output=json`, (res) => {
+    //   console.log(res);
+    // })
+    //
 
     knex('keywords').select('categories_id').where('key', keyword).asCallback((err, result) => {
       if (err) {

@@ -50,8 +50,6 @@ $(() => {
   })
 })
 
-
-
 // Calls to /general
 function loadItems(){
   $.ajax({
