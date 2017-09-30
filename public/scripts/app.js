@@ -41,8 +41,6 @@ $(() => {
       url: '/items/' + itemId,
       method: "DELETE", 
       success: function(result){
-        console.log("success");
-        // alert('You have deleted the item!',result);
         $('#'+itemId).remove();
       },
       error:function(error){
@@ -92,17 +90,19 @@ $(() => {
 $(() => {
   $('.register').on('click', (e) => {
     e.preventDefault();
+    const name = $('#regName').val();
     const email = $('#regEmail').val();
     const password = $('#regPW').val();
     $.ajax({
       url: '/register',
       method: "POST", 
-      data: {email = email, password = password},
+      data: {email: email, password: password, name: name},
       success: function(result){
         console.log("Success Registration");
       },
       error: function(error){
-        console.log("error occurred while registering ",error);
+        $('#errormessage').append($('<p>').text('Email can not be used.'));
+        console.log("error occurred while registering ");
       }
     });
   })

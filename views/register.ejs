@@ -31,6 +31,10 @@
   <form action="/register" method="post">
     <h2>Register</h2>
     <p>
+      <label for="register-name">Full Name</label>
+      <input class="register-name" name="name" id ='regName'>
+    </p>
+    <p>
       <label for="register-email">Email</label>
       <input class="register-email" name="email" id ='regEmail'>
     </p>
@@ -39,9 +43,12 @@
       <input class="register-password" name="password" type="password" id = 'regPW'>
     </p>
     <p>
-      <button class = 'register'>Register</button>
+      <button class ='register'>Register</button>
     </p>
   </form>
+  <p>
+    <div id ='errormessage'></div> 
+  </p>
   <script>
     $(document).foundation();
   </script>
