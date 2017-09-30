@@ -36,7 +36,7 @@ function renderItems(items) {
 $(() => {
   $('.row').on('click', '.test', (e) => {
     e.preventDefault();
-    const itemId = $('.test').attr('itemid');
+    const itemId = $(e.target).attr('itemid');
     $.ajax({
       url: '/items/' + itemId,
       method: "DELETE", 
