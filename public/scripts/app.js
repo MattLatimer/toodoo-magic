@@ -77,21 +77,23 @@ $(() => {
   $('#addItem').on('click', (e) => {
     e.preventDefault();
     const itemContent = $('#todoForm').val();
-    $.ajax({
-      url: "/items",
-      method: "POST",
-      data: { itemContent: itemContent, userid: userId }, //<-------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING DONE------------------
-      success: function(item) {
-        // loadNewItem(item);
-        // console.log(item);
-        if (item.loggedIn === 'false') {
-          location.href = 'http://localhost:8080/register';
-        } else {
-          renderItems(item);
-          $('#navbar').find('textarea[name="text"]').val('');
+    if (itemContent) {
+      $.ajax({
+        url: "/items",
+        method: "POST",
+        data: { itemContent: itemContent, userid: userId }, //<-------------TODO REMOVE HARDCODE USER WHEN COOKIE PARSING DONE------------------
+        success: function(item) {
+          // loadNewItem(item);
+          // console.log(item);
+          if (item.loggedIn === 'false') {
+            location.href = 'http://localhost:8080/register';
+          } else {
+            renderItems(item);
+            $('#navbar').find('textarea[name="text"]').val('');
+          }
         }
-      }
-    });
+      });
+    }
   });
 });
 
