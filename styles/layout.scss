@@ -1,6 +1,11 @@
 @import 'node_modules/foundation-sites/scss/foundation';
 @include foundation-everything(false);
 
+.sticky-topbar {
+  width: 100%;
+}
+
+
 body {
   font-family: 'Bree Serif', serif;
   background-color: #EEE;
@@ -61,10 +66,5 @@ body {
   .sort {
     background-color: #9E9E9E;
   }
-
-#navbar form {
-  display: inline-flex;
-}
-
 
 }
