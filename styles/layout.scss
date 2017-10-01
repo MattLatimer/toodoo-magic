@@ -53,6 +53,7 @@ body {
     text-align: left;
     padding-left: 1em;
     padding-right: 1em;
+    margin-bottom: 0em;
   }
 
   .movies {
@@ -117,7 +118,7 @@ body {
 .test {
   border-radius: 100%;
   margin-left: 1em;
-  vertical-align: text-top;
+  vertical-align: baseline;
   padding: 0.35em 0.5em;
 }
 
