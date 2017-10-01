@@ -19,7 +19,7 @@ const bcrypt          = require('bcrypt');
 
 
 // Seperated Routes for each Resource
-const usersRoutes   = require("./routes/users");
+const userRoutes   = require("./routes/user");
 const itemsRoutes   = require("./routes/items");
 const generalRoutes = require("./routes/general");
 
@@ -61,7 +61,7 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/users", usersRoutes(knex));
+app.use("/user", userRoutes(knex));
 app.use("/items", itemsRoutes(knex));
 app.use("/", generalRoutes(knex));
 

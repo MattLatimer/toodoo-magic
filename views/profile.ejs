@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <% include ./_header.ejs %>
+</head>
+
+<body>
+
+    <div class="logobox">
+    <a class="logotext" href="/">Toodoo</a>
+    </div>
+
+
+<div class="row">
+<div class="large-4 small-10 large-centered small-centered columns">
+<form action="/user?_method=PUT" method="POST" class="callout text-center">
+  <h2 class="registering">Profile</h2>
+  <div class="floated-label-wrapper">
+    <label for="profile-name">Full name</label>
+    <input type="text" id="proName" class="profile-name" name="name" value=<%= fullName %>>
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="profile-email">Email</label>
+    <input class="profile-email" name="email" id="proEmail" type="email" value=<%= email %>>
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="profile-password">Password</label>
+    <input type="password" id="proPW" class="profile-password" name="password" placeholder="Password">
+  </div>
+  <input class="profile button expanded" type="submit" value="Update">
+</form>
+</div>
+</div>
+
+
+
+
+
+  <!-- SCRIPTS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/vendor/foundation.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+
+</html>
