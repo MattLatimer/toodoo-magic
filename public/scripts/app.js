@@ -110,10 +110,10 @@ $(() => {
       method: "POST", 
       data: {email: email, password: password, name: name},
       success: function(result){
-        console.log("Success Registration");
+        location.href = 'http://localhost:8080/';        
       },
       error: function(error){
-        $('#errormessage').append($('<p>').text('Email can not be used.'));
+        $('#registrationMessage').append($('<p>').text('Email can not be used.'));
         console.log("error occurred while registering ");
       }
     });

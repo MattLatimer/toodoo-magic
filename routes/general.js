@@ -94,11 +94,11 @@ module.exports = (knex) => {
       let id = result[0];
       req.session.user_id = id;
       console.log("You have created your account and been logged in.");
-      res.redirect('/');
+      res.status(200).send(result);
       }
       else {
       return(error);
-      res.redirect('/register');
+      res.status(200);
       }
     })
     .catch((error) => { 
