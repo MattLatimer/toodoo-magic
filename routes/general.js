@@ -17,9 +17,9 @@ module.exports = (knex) => {
     }
     res.render("index");
   });
-  
-  
-  
+
+
+
   function findByEmail(email) {
     return new Promise((resolve, reject) => {
       knex('users')
@@ -33,7 +33,7 @@ module.exports = (knex) => {
         .catch((error) => reject(error));
     });
   }
-    
+
   function checkEmailUniqueness(email) {
     return new Promise((resolve, reject) => {
       findByEmail(email)
@@ -50,7 +50,7 @@ module.exports = (knex) => {
         .catch((email) => resolve(email));
     });
   }
-    
+
   function add(email, password, name) {
     return (
       checkEmailUniqueness(email) // First check if email already exists
@@ -67,18 +67,18 @@ module.exports = (knex) => {
           })
             .returning('id');
         })
-        //     // .catch((error) => { 
+        //     // .catch((error) => {
     //     //   console.log("function add error:", error)
     //     //   return reject(error);
     //   })
     );
   }
-      
+
   router.get("/login", (req, res) => {
     res.locals.error = '';
     res.render("login");
   });
-      
+
   router.post("/login", (req, res) => {
     findByEmail(req.body.email)
       .then((result) => {
@@ -97,7 +97,7 @@ module.exports = (knex) => {
         res.render("login");
       });
   });
-      
+
   router.post("/register", (req, res) => {
     let email = req.body.email;
     let pw = req.body.password;
@@ -115,7 +115,7 @@ module.exports = (knex) => {
       res.status(200);
       }
     })
-    .catch((error) => { 
+    .catch((error) => {
     console.log(error, "Unsuccessful Login.");
     res.status(400).send(error);
     })
@@ -136,7 +136,7 @@ module.exports = (knex) => {
     req.session.user_id = null;
     res.locals.user_id = undefined;
     // req.session = null;
-    res.redirect("/register");
+    res.redirect("/login");
     console.log("redirected!");
   });
 
