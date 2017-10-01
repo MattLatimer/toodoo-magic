@@ -31,6 +31,7 @@ $abyss-black: #252525;
 
 #todoForm {
   background-color: #6c5977;
+  color: $off-white;
   &:onclick { background-color: $off-white;}
 }
 
@@ -161,7 +162,9 @@ body {
   color: $off-white;
 }
 
-
+#registrationMessage {
+  color: $off-white;
+}
 
 
 
