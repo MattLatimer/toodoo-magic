@@ -2,6 +2,7 @@
 @include foundation-everything(false);
 
 $voodoo-purple: #53345f;
+$deep-purple: #372040;
 $off-white: #eee;
 $background-grey: #cccccc;
 $logo-font: 'Lobster', cursive;
@@ -15,13 +16,17 @@ $abyss-black: #252525;
 
 
 .top-bar, .top-bar ul {
-  background-color: #372040;
+  background-color: $deep-purple;
 }
 
 .cursive {
   font-family: $logo-font;
   font-size: 40px;
   color: $off-white;
+
+  &:hover {
+    color: #a7a7a7;
+  }
 }
 
 #todoForm {
@@ -122,7 +127,7 @@ body {
   padding: 0.35em 0.5em;
 }
 
-
+/* EDIT PAGE STYLING */
 .editText {
   color: $off-white;
   font-family: $heading-font;
@@ -133,7 +138,7 @@ body {
   @extend .cursive;
   text-align: center;
   margin-top: 1em;
-  font-size: 50px;
+  font-size: 70px;
 
     .logotext {
       &:hover {
@@ -141,3 +146,24 @@ body {
       }
     }
 }
+
+/* REGISTER PAGE STYLING */
+.callout {
+  background-color: $deep-purple;
+
+  label {
+    color: $off-white;
+  }
+}
+
+.registering {
+  font-style: $heading-font;
+  color: $off-white;
+}
+
+
+
+
+
+
+

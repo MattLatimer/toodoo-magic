@@ -7,40 +7,41 @@
 
 <body>
 
-  <span class="cursive">Toodoo</span>
-  <a href='login'><button>Login as User 1</button></a>
-  <!--       <form action="/login" method="POST">
-      <input type="submit" value="Login as User 1" id="user1button">
-    </form>
-    <form action="/login" method="POST">
-     <input type="submit" value="Login as User 2" id="user2button">
-    </form> -->
+    <div class="logobox">
+    <a class="logotext" href="/">Toodoo</a>
+    </div>
+
+
+<div class="row">
+<div class="large-4 small-10 large-centered small-centered columns">
+<form action="/register" method="POST" class="callout text-center">
+  <h2 class="registering">Register</h2>
+  <div class="floated-label-wrapper">
+    <label for="register-name">Full name</label>
+    <input type="text" id="regName" class="register-name" name="name" placeholder="Full name">
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="register-email">Email</label>
+    <input class="register-email" name="email" id="regEmail" type="email" placeholder="Email">
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="register-password">Password</label>
+    <input type="password" id="regPW" class="register-password" name="password" placeholder="Password">
+  </div>
+  <input class="register button expanded" type="submit" value="Sign up">
+</form>
+<div id='registrationMessage'></div>
+</div>
+</div>
+
+
+
+
 
   <!-- SCRIPTS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/vendor/foundation.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-  <form action="/register" method="post">
-    <h2>Register</h2>
-    <p>
-      <label for="register-name">Full Name</label>
-      <input class="register-name" name="name" id ='regName'>
-    </p>
-    <p>
-      <label for="register-email">Email</label>
-      <input class="register-email" name="email" id ='regEmail'>
-    </p>
-    <p>
-      <label for="register-password">Password</label>
-      <input class="register-password" name="password" type="password" id = 'regPW'>
-    </p>
-    <p>
-      <button class ='register' href="#">Register</button>
-    </p>
-  </form>
-  <p>
-    <div id ='registrationMessage'></div> 
-  </p>
   <script>
     $(document).foundation();
   </script>
