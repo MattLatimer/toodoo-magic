@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <% include ./_header.ejs %>
+</head>
+
+<body>
+  <span class="cursive">Toodoo</span>
+
+  <form action="/login" method="post">
+    <h2>Login</h2>
+    <p>
+      <label for="login-email">Email</label>
+      <input class="login-email" name="email" id ='logEmail'>
+    </p>
+    <p>
+      <label for="login-password">Password</label>
+      <input class="login-password" name="password" type="password" id = 'logPW'>
+    </p>
+    <p>
+      <button class ='login'>Login</button>
+      <%= (error) ? error : '' %>
+    </p>
+  </form>
+  <p>
+  </p>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/vendor/foundation.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script>$(document).foundation();</script>
+</body>
+
+</html>
