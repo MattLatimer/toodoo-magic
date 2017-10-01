@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <% include ./_header.ejs %>
@@ -9,18 +8,8 @@
 
   <span class="cursive">Toodoo</span>
   <a href='login'><button>Login as User 1</button></a>
-  <!--       <form action="/login" method="POST">
-      <input type="submit" value="Login as User 1" id="user1button">
-    </form>
-    <form action="/login" method="POST">
-     <input type="submit" value="Login as User 2" id="user2button">
-    </form> -->
 
-  <!-- SCRIPTS -->
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/vendor/foundation.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <form action="/register" method="post">
+  <form action="/register" method="POST">
     <h2>Register</h2>
     <p>
       <label for="register-name">Full Name</label>
@@ -28,7 +17,7 @@
     </p>
     <p>
       <label for="register-email">Email</label>
-      <input class="register-email" name="email" id ='regEmail'>
+      <input class="register-email" name="email" type="email" id ='regEmail'>
     </p>
     <p>
       <label for="register-password">Password</label>
@@ -39,8 +28,14 @@
     </p>
   </form>
   <p>
-    <div id ='errormessage'></div> 
+    <div id ='errormessage'></div>
   </p>
+
+
+    <!-- SCRIPTS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/vendor/foundation.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
   <script>
     $(document).foundation();
   </script>

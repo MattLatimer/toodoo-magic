@@ -2,6 +2,7 @@
 @include foundation-everything(false);
 
 $voodoo-purple: #53345f;
+$deep-purple: #372040;
 $off-white: #eee;
 $background-grey: #cccccc;
 $logo-font: 'Lobster', cursive;
@@ -15,7 +16,7 @@ $abyss-black: #252525;
 
 
 .top-bar, .top-bar ul {
-  background-color: #372040;
+  background-color: $deep-purple;
 }
 
 .cursive {
@@ -122,7 +123,7 @@ body {
   padding: 0.35em 0.5em;
 }
 
-
+/* EDIT PAGE */
 .editText {
   color: $off-white;
   font-family: $heading-font;
@@ -141,3 +142,21 @@ body {
       }
     }
 }
+
+/* REGISTER PAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
