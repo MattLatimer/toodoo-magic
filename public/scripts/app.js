@@ -107,10 +107,10 @@ $(() => {
     const password = $('#regPW').val();
     $.ajax({
       url: '/register',
-      method: "POST", 
+      method: "POST",
       data: {email: email, password: password, name: name},
-      success: function(result){
-        location.href = 'http://localhost:8080/';        
+      success: function(){
+        location.href = '/';
       },
       error: function(error){
         $('#registrationMessage').append($('<p>').text('Email can not be used.'));

@@ -13,7 +13,7 @@ module.exports = (knex) => {
     // res.render("login");
     // else render app
     if(!res.locals.user_id) {
-      res.render('register');
+      res.render('login');
     }
     res.render("index");
   });
@@ -108,7 +108,7 @@ module.exports = (knex) => {
       let id = result[0];
       req.session.user_id = id;
       console.log("You have created your account and been logged in.");
-      res.status(200).send(result);
+      res.status(200);
       }
       else {
       return(error);
