@@ -12,10 +12,11 @@ module.exports = (knex) => {
     // render login page if not logged in
     // res.render("login");
     // else render app
-    if(!res.locals.user_id) {
-      res.render('register');
-    }
-    res.render("index");
+    console.log(req.session.user_id);
+    if(req.session.user_id) {
+      res.render("index");
+    } 
+    res.redirect('login');
   });
   
   
@@ -136,7 +137,7 @@ module.exports = (knex) => {
     req.session.user_id = null;
     res.locals.user_id = undefined;
     // req.session = null;
-    res.redirect("/register");
+    res.redirect("/login");
     console.log("redirected!");
   });
 
