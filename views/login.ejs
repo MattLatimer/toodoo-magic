@@ -6,25 +6,33 @@
 </head>
 
 <body>
-  <span class="cursive">Toodoo</span>
+    <div class="logobox">
+    <a class="logotext" href="/">Toodoo</a>
+    </div>
 
-  <form action="/login" method="post">
-    <h2>Login</h2>
-    <p>
-      <label for="login-email">Email</label>
-      <input class="login-email" name="email" id ='logEmail'>
-    </p>
-    <p>
-      <label for="login-password">Password</label>
-      <input class="login-password" name="password" type="password" id = 'logPW'>
-    </p>
-    <p>
-      <button class ='login'>Login</button>
-      <%= (error) ? error : '' %>
-    </p>
-  </form>
-  <p>
-  </p>
+<div class="row">
+<div class="large-4 small-10 large-centered small-centered columns">
+<form action="/login" method="POST" class="callout text-center">
+  <h2 class="registering">Login</h2>
+  <div class="floated-label-wrapper">
+    <label for="login-email">Email</label>
+    <input type="email" id="logEmail" class="login-email" name="email" placeholder="Email">
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="login-password">Password</label>
+    <input type="password" id="password" class="login-password" name="password" placeholder="Password">
+  </div>
+  <input class="login button expanded" type="submit" value="Login">
+  <div class= "RegisterLink">
+  <p><a href="/register">Not a User? Register now! </a></p>
+  </div>
+</form>
+  <div class= "loginError">
+  <%= (error) ? error : '' %>
+  </div>
+</div>
+</div>
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/vendor/foundation.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
