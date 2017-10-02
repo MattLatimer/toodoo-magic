@@ -9,10 +9,6 @@ const bcrypt  = require('bcrypt');
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    // render login page if not logged in
-    // res.render("login");
-    // else render app
-    console.log(req.session.user_id);
     if(req.session.user_id) {
       res.render("index");
     } 
@@ -68,10 +64,6 @@ module.exports = (knex) => {
           })
             .returning('id');
         })
-        //     // .catch((error) => { 
-    //     //   console.log("function add error:", error)
-    //     //   return reject(error);
-    //   })
     );
   }
       
@@ -136,7 +128,6 @@ module.exports = (knex) => {
   router.get("/logout", (req, res) => {
     req.session.user_id = null;
     res.locals.user_id = undefined;
-    // req.session = null;
     res.redirect("/login");
     console.log("redirected!");
   });

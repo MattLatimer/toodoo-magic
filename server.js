@@ -48,7 +48,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.set("view engine", "ejs"); // Our app will be a SPA
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({

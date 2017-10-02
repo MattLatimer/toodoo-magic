@@ -4,7 +4,7 @@ const express = require('express');
 const router  = express.Router();
 const bcrypt  = require('bcrypt');
 
-// localhost:8080/users/
+// localhost:8080/user/
 
 module.exports = (knex) => {
 

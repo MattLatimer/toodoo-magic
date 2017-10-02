@@ -6,7 +6,6 @@ const request = require('request');
 const user    = require('../lib/checkLogin');
 
 // localhost:8080/items/
-// need to add middleware for user id and plug into all router
 
 module.exports = (knex) => {
   // Helper functions
@@ -36,6 +35,7 @@ module.exports = (knex) => {
     })
     return stripped.join(' ');
   }
+
   router.get("/", (req, res) => {
     knex.select('id', 'content', 'categories_id')
       .from('items')
@@ -47,7 +47,6 @@ module.exports = (knex) => {
         console.log('error GET /items', err);
       });
   });
-
 
   router.post("/", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
@@ -129,8 +128,6 @@ module.exports = (knex) => {
     } else {
       const userId = req.session.user_id;
       const itemId = req.params.itemId;
-      // console.log("my values ",userId, itemId);
-      // console.log (res.locals.user_id, itemId);
       knex('items')
       .where ("users_id", userId)
       .andWhere("id",itemId)
@@ -141,15 +138,11 @@ module.exports = (knex) => {
       .catch((err) => {
         console.log('error delete /:itemsId', err);
       });
-      // response = knex.select('content', 'categories.title').from('items').join('categories').on(items.categories_id = categories.id).where(items.users_id = '1')
-      // knex
-      // delete from items table
     }
   });
 
   router.put("/:itemId", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
-      // res.json( { loggedIn: 'false' } );
       res.redirect('/register');
     } else {
       const itemId = req.params.itemId;
@@ -166,7 +159,6 @@ module.exports = (knex) => {
 
   router.get("/edit/:itemId", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
-      // res.json( { loggedIn: 'false' } );
       res.redirect('/register');
     } else {
       res.locals.itemId = req.params.itemId;
