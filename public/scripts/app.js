@@ -4,8 +4,8 @@ function renderItems(items) {
     const containerID = "." + item.categories_id;
     $(containerID)
       .append($("<p>")
-        .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
-        .append($("<input>").val('X').attr('type', 'submit').attr('class', 'test button alert tiny').attr('itemId', item.id)));
+      .append($("<a>").text(item.content).attr('href', `/items/edit/${item.id}`)).attr('id', item.id).attr('data-item-id', item.id)
+      .append($("<input>").val('X').attr('type', 'submit').attr('class', 'test button alert tiny').attr('itemId', item.id)));
   }
 }
 
@@ -53,8 +53,8 @@ $(() => {
         method: "POST",
         data: { itemContent: itemContent },
         success: function(item) {
-            renderItems(item);
-            $('#todoForm').val('');
+          renderItems(item);
+          $('#todoForm').val('');
         }
       });
     }

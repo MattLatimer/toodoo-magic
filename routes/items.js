@@ -163,18 +163,29 @@ module.exports = (knex) => {
     } else {
       res.locals.itemId = req.params.itemId;
       res.locals.userId = req.session.user_id;
-      console.log("User and Item:", res.locals.userId, res.locals.itemId);
       knex('items').select('content', 'categories_id').where({'id': res.locals.itemId, 'users_id': res.locals.userId})
         .then((result) => {
-          if (result.length) {
-            console.log("Then result:", result);
-            res.locals.content = result[0]['content'];
-            res.locals.categoryId = result[0]["categories_id"];
-            res.render("edit");
-          } else {
-            res.status(401).send("You have no item here.");
-          }
-        });
+          if (result[0].categories_id === 2) {
+          // if category is books, then call Google Books API for further info
+          request(`https://www.googleapis.com/books/v1/volumes?q=${result[0].content}&key=${process.env.GOOGLE_KEY}`, (err, results, body) => {
+            if (err) throw err;
+            else {
+              res.locals.content = result[0].content;
+              res.locals.categoryId = result[0]["categories_id"];
+              const bookInfo = JSON.parse(body);
+              res.locals.bookLink = bookInfo.items[0].volumeInfo.infoLink;
+              res.render("edit");
+            }
+          });
+          } else if (result.length) {
+              res.locals.content = result[0]['content'];
+              res.locals.categoryId = result[0]["categories_id"];
+              res.locals.bookLink = null;
+              res.render("edit");
+            } else {
+              res.status(401).send("You have no item here.");
+            }
+          });
     }
   });
 

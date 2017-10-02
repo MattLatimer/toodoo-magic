@@ -4,7 +4,9 @@
       <% include ./_header.ejs %>
   </head>
   <body>
-
+    <% if (bookLink) { %>
+      <p></p><a href='<%= bookLink %>'>More info at Google Books!</a></p>
+    <% } %>
     <div class="row">
     <div class="large-4 small-10 large-centered small-centered columns">
 
