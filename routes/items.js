@@ -36,6 +36,7 @@ module.exports = (knex) => {
     return stripped.join(' ');
   }
 
+// GET for main page selects the items that are associated with the logged in user//  
   router.get("/", (req, res) => {
     knex.select('id', 'content', 'categories_id')
       .from('items')
@@ -48,6 +49,7 @@ module.exports = (knex) => {
       });
   });
 
+// POST for main page that checks whether the user logged in then filters the items with keywords association then wolfram API if keywords was not entered//    
   router.post("/", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
       res.json( { loggedIn: 'false' } );
@@ -122,6 +124,7 @@ module.exports = (knex) => {
     }
   });
 
+// DELETE for specific item that checks whether the user logged in then proceeds with deleting the item in the database//    
   router.delete("/:itemId", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
       res.json( { loggedIn: 'false' } );
@@ -141,6 +144,7 @@ module.exports = (knex) => {
     }
   });
 
+// POST existing item that checks whether the user logged in then proceeds with updating the item information in the database//    
   router.put("/:itemId", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
       res.redirect('/register');
@@ -157,6 +161,7 @@ module.exports = (knex) => {
     }
   });
 
+// GET existing item that checks whether the user logged in then uses Google Books API for book info//      
   router.get("/edit/:itemId", (req, res) => {
     if (user.checkLoggedIn(req) === false) {
       res.redirect('/register');
