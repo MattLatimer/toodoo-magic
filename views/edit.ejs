@@ -4,9 +4,6 @@
       <% include ./_header.ejs %>
   </head>
   <body>
-    <% if (bookLink) { %>
-      <p></p><a href='<%= bookLink %>'>More info at Google Books!</a></p>
-    <% } %>
     <div class="row">
     <div class="large-4 small-10 large-centered small-centered columns">
 
@@ -16,6 +13,12 @@
 
     <div class="form-icons">
       <h4 class="editText">Edit</h4>
+
+    <div class="link">
+      <% if (bookLink) { %>
+        <p></p><a href='<%= bookLink %>'>More info at Google Books!</a></p>
+      <% } %>
+    </div>
 
       <form action="/items/<%= itemId %>?_method=PUT" method="POST">
       <div class="input-group">
