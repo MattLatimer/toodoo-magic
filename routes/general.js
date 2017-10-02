@@ -8,6 +8,7 @@ const bcrypt  = require('bcrypt');
 
 module.exports = (knex) => {
 
+// GET for main page that checks if user has signed in and if not redirects to login page//
   router.get("/", (req, res) => {
     if(req.session.user_id) {
       res.render("index");
@@ -16,7 +17,7 @@ module.exports = (knex) => {
   });
   
   
-  
+// Helper function passing an email checks whether the email is in the database//
   function findByEmail(email) {
     return new Promise((resolve, reject) => {
       knex('users')
@@ -30,7 +31,9 @@ module.exports = (knex) => {
         .catch((error) => reject(error));
     });
   }
-    
+
+
+// Helper function passing an email to check for uniqueness of email in the database, uses findByEmail function then rejects if the email is already in the database //
   function checkEmailUniqueness(email) {
     return new Promise((resolve, reject) => {
       findByEmail(email)
@@ -48,15 +51,15 @@ module.exports = (knex) => {
     });
   }
     
+
+// Helper function passing email, password and name then check the email uniqueness, hashes the password then add the new user information into the database//
   function add(email, password, name) {
     return (
-      checkEmailUniqueness(email) // First check if email already exists
+      checkEmailUniqueness(email) 
         .then((email) => {
-          console.log("Email is unique");
           return bcrypt.hash(password, 10);
         })
         .then((passwordDigest) => {
-          console.log("Pw is hashed");
           return knex('users').insert({
             email: email,
             pw_hash: passwordDigest,
@@ -66,12 +69,14 @@ module.exports = (knex) => {
         })
     );
   }
-      
+ 
+// GET for /login//  
   router.get("/login", (req, res) => {
     res.locals.error = '';
     res.render("login");
   });
-      
+   
+// POST for /login using findByEmail function to find entered email in the database, then bcrypt compare the password and the password entered then redirects to main page//
   router.post("/login", (req, res) => {
     findByEmail(req.body.email)
       .then((result) => {
@@ -90,17 +95,16 @@ module.exports = (knex) => {
         res.render("login");
       });
   });
-      
+
+// POST for /register add the email,pw and name of the new user to the database after checking for unique user using the add function//
   router.post("/register", (req, res) => {
     let email = req.body.email;
     let pw = req.body.password;
     let name = req.body.name;
     add(email, pw, name).then((result) => {
-      console.log(result);
       if (result != undefined){
       let id = result[0];
       req.session.user_id = id;
-      console.log("You have created your account and been logged in.");
       res.status(200).send(result);
       }
       else {
@@ -118,18 +122,16 @@ module.exports = (knex) => {
       });
   });
 
-
-
-
+// GET for /register//
   router.get("/register", (req, res) => {
     res.render("register");
   });
 
+// GET for /logout that gets rid of session cookies// 
   router.get("/logout", (req, res) => {
     req.session.user_id = null;
     res.locals.user_id = undefined;
     res.redirect("/login");
-    console.log("redirected!");
   });
 
   return router;

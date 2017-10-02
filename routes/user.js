@@ -8,6 +8,7 @@ const bcrypt  = require('bcrypt');
 
 module.exports = (knex) => {
 
+// GET existing user info from database then rendering profile on page otherwise redirect to login page//    
   router.get('/', (req, res) => {
     if (req.session.user_id) {
       knex('users').select('full_name', 'email').where('id', req.session.user_id)
@@ -22,6 +23,7 @@ module.exports = (knex) => {
     }
   });
 
+// PUT updating existing user info//     
   router.put("/", (req, res) => {
     if (req.session.user_id) {
       if (req.body.password) {

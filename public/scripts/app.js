@@ -1,3 +1,4 @@
+//Looping function that adds all the items onto the app//
 function renderItems(items) {
 
   for (let item of items) {
@@ -9,6 +10,7 @@ function renderItems(items) {
   }
 }
 
+//Function listening on the click for deleting items//
 $(() => {
   $('.row').on('click', '.test', (e) => {
     e.preventDefault();
@@ -26,7 +28,7 @@ $(() => {
   })
 })
 
-// Calls to /general
+// Calls for /general // Function that loads items using ajax and a renderItems looping function//
 function loadItems(){
   $.ajax({
     url: "/items",
@@ -42,7 +44,7 @@ $(() => {
   loadItems();
 });
 
-// Calls to /items
+// Calls to /items // Function listening on click for adding items into the database//
 $(() => {
   $('#addItem').on('click', (e) => {
     e.preventDefault();
@@ -62,7 +64,7 @@ $(() => {
 });
 
 
-// REGISTERING
+// Function for registering new users's name, email and password//
 $(() => {
   $('.register').on('click', (e) => {
     e.preventDefault();
