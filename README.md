@@ -21,6 +21,11 @@
   - On edit, if the item is a book, provides additional info via the Google Books API
 - Styled using Zurb Foundations 5 & Sass
 
+## Screenshots
+![Login](https://github.com/MattLatimer/toodoo-magic/blob/master/screenshots/1.png "Login")
+![Main](https://github.com/MattLatimer/toodoo-magic/blob/master/screenshots/2.png "Main")
+![Book Edit](https://github.com/MattLatimer/toodoo-magic/blob/master/screenshots/3.png "Book Edit")
+
 ## Dependencies
 - Node 5.10.x or above
 - NPM 3.8.x or above
